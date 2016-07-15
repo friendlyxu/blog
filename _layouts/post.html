@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<article class="post container">
+<article class="post">
   <div class="post-meta">
     <span class="post-meta-span date">{{ page.date | date:"%Y %B %d" }}</span>
     {% if page.tags.size > 0 %}
@@ -10,12 +10,12 @@ layout: default
     {% endif %}
   </div>
 
-  <h1 class="post-title">{{ page.title }}</h1>
+  <h1 class="post-title center-block">{{ page.title }}</h1>
   {{ content }}
 </article>
 
 <div class="post-share">
-  <div class="container">
+  
     <a href="http://service.weibo.com/share/share.php?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}" target="_blank" class="post-share-icon weibo"></a>
-  </div>
+  
 </div>
