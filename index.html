@@ -2,10 +2,63 @@
 layout: default
 title: 我的Blog
 ---
-<h2>{{ page.title }}</h2>
-<p>最新文章</p>
-<ul>
-　　{% for post in site.posts %}
-　　　　<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-　　{% endfor %}
-</ul>
+<div class="card">
+    <div class="card-header">
+        最新博客
+    </div>
+    <div class="card-block">
+        <ul class="list-group">
+        　　{% for post in site.posts %}
+        　　　　<li class="list-group-item">{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+        　　{% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        Line chart
+    </div>
+    <div class="card-block">
+        <canvas id="myLineChart" width="400" height="200"></canvas>
+    </div>
+</div>
+<div class="card">
+  <div class="card-header">
+    Bar chart
+  </div>
+  <div class="card-block">
+    <canvas id="myBarChart" width="400" height="200"></canvas>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">
+    Radar chart
+  </div>
+  <div class="card-block">
+    <canvas id="myRadarChart" width="400" height="200"></canvas>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">
+    Polar Area chart
+  </div>
+  <div class="card-block">
+    <canvas id="myPolarAreaChart" width="400" height="200"></canvas>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">
+    Pie chart
+  </div>
+  <div class="card-block">
+    <canvas id="myPieChart" width="400" height="200"></canvas>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">
+    Doughnut chart
+  </div>
+  <div class="card-block">
+    <canvas id="myDoughnutChart" width="400" height="200"></canvas>
+  </div>
+</div>
