@@ -1,0 +1,1120 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="[TOC] 站内信##背景描述  从2.4.0接口开始，后续的版本也都会路由到2.4.0，但更新涉及的文件，最好从2.4.0开始都更新到。 redis部分采用有序集存储用户列表，哈希存储消息主体，每天检查清理半年前的数据 未读消息ID存储有序集，已读消息ID则从未读有序集合删除 消息ID定义为分表后缀和表自增ID的组合(2016:9:1) mysql部分采用季度分表实现，根据脚本每季度最后一天自动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/10/23/一折文档/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[TOC] 站内信##背景描述  从2.4.0接口开始，后续的版本也都会路由到2.4.0，但更新涉及的文件，最好从2.4.0开始都更新到。 redis部分采用有序集存储用户列表，哈希存储消息主体，每天检查清理半年前的数据 未读消息ID存储有序集，已读消息ID则从未读有序集合删除 消息ID定义为分表后缀和表自增ID的组合(2016:9:1) mysql部分采用季度分表实现，根据脚本每季度最后一天自动">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-23T07:10:52.450Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="[TOC] 站内信##背景描述  从2.4.0接口开始，后续的版本也都会路由到2.4.0，但更新涉及的文件，最好从2.4.0开始都更新到。 redis部分采用有序集存储用户列表，哈希存储消息主体，每天检查清理半年前的数据 未读消息ID存储有序集，已读消息ID则从未读有序集合删除 消息ID定义为分表后缀和表自增ID的组合(2016:9:1) mysql部分采用季度分表实现，根据脚本每季度最后一天自动">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Hexo" title="Hexo"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/10/23/一折文档/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2017-10-23T07:10:52.450Z" itemprop="datePublished"> 发表于 2017-10-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#站内信"><span class="toc-number">1.</span> <span class="toc-text">站内信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis设计"><span class="toc-number">1.1.</span> <span class="toc-text">Redis设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表结构"><span class="toc-number">1.2.</span> <span class="toc-text">表结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入口文件"><span class="toc-number">1.3.</span> <span class="toc-text">入口文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类"><span class="toc-number">1.4.</span> <span class="toc-text">主要类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">响应示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-1"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-1"><span class="toc-number">1.4.0.4.</span> <span class="toc-text">响应示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-2"><span class="toc-number">1.4.0.5.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-2"><span class="toc-number">1.4.0.6.</span> <span class="toc-text">响应示例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#聚优惠"><span class="toc-number">2.</span> <span class="toc-text">聚优惠</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis设计-1"><span class="toc-number">2.1.</span> <span class="toc-text">Redis设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表结构-1"><span class="toc-number">2.2.</span> <span class="toc-text">表结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入口文件-1"><span class="toc-number">2.3.</span> <span class="toc-text">入口文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类-1"><span class="toc-number">2.4.</span> <span class="toc-text">主要类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-3"><span class="toc-number">2.4.0.1.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-3"><span class="toc-number">2.4.0.2.</span> <span class="toc-text">响应示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-4"><span class="toc-number">2.4.0.3.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-4"><span class="toc-number">2.4.0.4.</span> <span class="toc-text">响应示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-5"><span class="toc-number">2.4.0.5.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-5"><span class="toc-number">2.4.0.6.</span> <span class="toc-text">响应示例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#签到后的活动弹窗广告"><span class="toc-number">3.</span> <span class="toc-text">签到后的活动弹窗广告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#表结构-2"><span class="toc-number">3.1.</span> <span class="toc-text">表结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#入口文件-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">入口文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类-2"><span class="toc-number">3.2.</span> <span class="toc-text">主要类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-6"><span class="toc-number">3.2.0.1.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-6"><span class="toc-number">3.2.0.2.</span> <span class="toc-text">响应示例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微信端获取站内信通知"><span class="toc-number">4.</span> <span class="toc-text">微信端获取站内信通知</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类-3"><span class="toc-number">4.1.</span> <span class="toc-text">主要类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入口文件-3"><span class="toc-number">4.2.</span> <span class="toc-text">入口文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-7"><span class="toc-number">4.2.0.1.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应结果"><span class="toc-number">4.2.0.2.</span> <span class="toc-text">响应结果</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#是否提过现金"><span class="toc-number">5.</span> <span class="toc-text">是否提过现金</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景说明"><span class="toc-number">5.1.</span> <span class="toc-text">背景说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程图"><span class="toc-number">5.2.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类方法"><span class="toc-number">5.3.</span> <span class="toc-text">主要类方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#入口文件-4"><span class="toc-number">5.3.1.</span> <span class="toc-text">入口文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口"><span class="toc-number">5.3.2.</span> <span class="toc-text">接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-8"><span class="toc-number">5.3.2.1.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-7"><span class="toc-number">5.3.2.2.</span> <span class="toc-text">响应示例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#游拍回调接口"><span class="toc-number">6.</span> <span class="toc-text">游拍回调接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景说明-1"><span class="toc-number">6.1.</span> <span class="toc-text">背景说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类-4"><span class="toc-number">6.2.</span> <span class="toc-text">主要类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入口文件-5"><span class="toc-number">6.3.</span> <span class="toc-text">入口文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#接口说明"><span class="toc-number">6.3.1.</span> <span class="toc-text">接口说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#社区城市标识同步到一折"><span class="toc-number">7.</span> <span class="toc-text">社区城市标识同步到一折</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景说明-2"><span class="toc-number">7.1.</span> <span class="toc-text">背景说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类-5"><span class="toc-number">7.2.</span> <span class="toc-text">主要类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入口文件-6"><span class="toc-number">7.3.</span> <span class="toc-text">入口文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#接口说明-1"><span class="toc-number">7.3.1.</span> <span class="toc-text">接口说明</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<p>[TOC]</p>
+<h1 id="站内信"><a href="#站内信" class="headerlink" title="站内信"></a>站内信</h1><p>##背景描述</p>
+<ul>
+<li>从2.4.0接口开始，后续的版本也都会路由到2.4.0，但更新涉及的文件，最好从2.4.0开始都更新到。</li>
+<li>redis部分采用有序集存储用户列表，哈希存储消息主体，每天检查清理半年前的数据</li>
+<li>未读消息ID存储有序集，已读消息ID则从未读有序集合删除</li>
+<li>消息ID定义为分表后缀和表自增ID的组合(2016:9:1)</li>
+<li>mysql部分采用季度分表实现，根据脚本每季度最后一天自动建表</li>
+<li>根据业务需求，一般会涉及到当前季度表和前一个季度表的操作</li>
+</ul>
+<h2 id="Redis设计"><a href="#Redis设计" class="headerlink" title="Redis设计"></a>Redis设计</h2><ul>
+<li>msg<em>unread</em><channel>[_<uid>]</uid></channel></li>
+<li>msg_id<em>list</em><channel>[_<uid>]</uid></channel></li>
+<li>msg<em>info</em><uid></uid></li>
+<li>msg_shard</li>
+<li>msg_send_list[_sys]</li>
+<li>msg_last_time</li>
+<li>msg_del_cache_end_time</li>
+<li>cent_withdraw_notify //区分2.4.0以上,Z币提现通知 type=hash key=表记录id</li>
+<li>new_cent_withdraw_notify //区分2.4.0以上,新集分宝提现通知 type=hash key=表记录id</li>
+<li>cent_exchange_notify  //区分2.4.0以上,Z币兑换通知 type=hash key=表记录id</li>
+</ul>
+<h2 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">+----------+---------------------+------+-----+---------------------+----------------+</div><div class="line">| Field    | Type                | Null | Key | Default             | Extra          |</div><div class="line">+----------+---------------------+------+-----+---------------------+----------------+</div><div class="line">| id       | int(10) unsigned    | NO   | PRI | NULL                | auto_increment |</div><div class="line">| uid      | int(10) unsigned    | NO   | MUL | NULL                |                |</div><div class="line">| status   | tinyint(3) unsigned | NO   |     | 0                   |                |</div><div class="line">| channel  | tinyint(3) unsigned | NO   | MUL | 1                   |                |</div><div class="line">| type     | tinyint(3) unsigned | NO   |     | 1                   |                |</div><div class="line">| pub_time | datetime            | NO   | MUL | 0000-00-00 00:00:00 |                |</div><div class="line">| cid      | varchar(20)         | NO   |     |                     |                |</div><div class="line">| app_show | tinyint(3) unsigned | NO   |     | 0                   |                |</div><div class="line">+----------+---------------------+------+-----+---------------------+----------------+</div><div class="line">CREATE TABLE `table_notify_user_2016_9` (</div><div class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;id&apos;,</div><div class="line">  `uid` int(10) unsigned NOT NULL COMMENT &apos;用户id，接收方&apos;,</div><div class="line">  `status` tinyint(3) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;0未读，1已读&apos;,</div><div class="line">  `channel` tinyint(3) unsigned NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;消息频道 0 系统消息 1 提现通知...&apos;,</div><div class="line">  `type` tinyint(3) unsigned NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;消息类型，不同频道，对应类型&apos;,</div><div class="line">  `pub_time` datetime NOT NULL DEFAULT &apos;0000-00-00 00:00:00&apos; COMMENT &apos;消息发布时间&apos;,</div><div class="line">  `cid` varchar(20) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;内容表id&apos;,</div><div class="line">  `app_show` tinyint(3) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;客户端显示0全部,1安卓,2IOS&apos;,</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  KEY `idx_uid` (`uid`),</div><div class="line">  KEY `idx_pub_time` (`pub_time`),</div><div class="line">  KEY `idx_channel_type` (`channel`,`type`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=1152 DEFAULT CHARSET=utf8 COMMENT=&apos;用户消息表&apos;</div><div class="line"></div><div class="line">+---------+------------------+------+-----+---------+----------------+</div><div class="line">| Field   | Type             | Null | Key | Default | Extra          |</div><div class="line">+---------+------------------+------+-----+---------+----------------+</div><div class="line">| id      | int(10) unsigned | NO   | PRI | NULL    | auto_increment |</div><div class="line">| content | text             | NO   |     | NULL    |                |</div><div class="line">| str_uid | longtext         | NO   |     | NULL    |                |</div><div class="line">| bak1    | text             | YES  |     | NULL    |                |</div><div class="line">+---------+------------------+------+-----+---------+----------------+</div><div class="line">CREATE TABLE `table_notify_content_2016_9` (</div><div class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;id&apos;,</div><div class="line">  `content` text NOT NULL COMMENT &apos;消息内容&apos;,</div><div class="line">  `str_uid` longtext NOT NULL COMMENT &apos;uid_list&apos;,</div><div class="line">  `bak1` text COMMENT &apos;bak1&apos;,</div><div class="line">  PRIMARY KEY (`id`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=1152 DEFAULT CHARSET=utf8 COMMENT=&apos;消息内容表&apos;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="http://www.myinterface.com/index.php?subject=1zhe.com&amp;version=2.4.0&amp;searchkey=notify" target="_blank" rel="external">接口详细说明</a></p>
+<h2 id="入口文件"><a href="#入口文件" class="headerlink" title="入口文件"></a>入口文件</h2><ul>
+<li>/wwwroot/android/version_2.4.0/app_home/notify/index.php</li>
+<li>/wwwroot/ios/version_2.4.0/app_home/notify/index.php</li>
+</ul>
+</blockquote>
+<h2 id="主要类"><a href="#主要类" class="headerlink" title="主要类"></a>主要类</h2><ul>
+<li>/wwwroot/android/version_2.4.0/app_library/cls_site_notify.php</li>
+<li><p>/wwwroot/ios/version_2.4.0/app_library/cls_site_notify.php<br>###列表接口</p>
+<p>  public function notify_list($channel, $user_info, $page, $pageSize = 10)<br>  接口名：列表接口<br>  请求地址：<a href="http://app.1zhe.com/android/index_bak.php?m=notify&amp;op=index&amp;ac=list&amp;v=2.4.0" target="_blank" rel="external">http://app.1zhe.com/android/index_bak.php?m=notify&amp;op=index&amp;ac=list&amp;v=2.4.0</a><br>  请求方式：post</p>
+<h4 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h4><p>| 参数名                   | 类型     | 必填   | 描述                                       | 默认值            |<br>| ——————— | —— | —- | —————————————- | ————– |<br>| u                     | string | 是    | 用户登录参数                                   | null           |<br>| token                 | string | 是    | 用户登录参数                                   | null           |<br>| server_id             | string | 是    | server_id                                | yizhetemai     |<br>| app_name              | string | 是    | app                                      | 名称             |<br>| app_version           | string | 是    | app                                      | 版本号            |<br>| device_name           | string | 是    | 设备名称                                     | Google Nexus S |<br>| device_system_version | string | 是    | 系统版本号                                    | 4.1.1          |<br>| channel               | int    | 是    | 消息频道，0系统通知，1提现通知，2邀请好友通知，3订单抽奖通知，4兑换审核通知，5个人通知 | 1              |<br>| page                  | int    | 否    | page                                     | 1              |<br>| page_size             | int    | 否    | page_size                                | null           |</p>
+<h4 id="响应示例"><a href="#响应示例" class="headerlink" title="响应示例"></a>响应示例</h4></li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"error_code"</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">"error_message"</span>: <span class="string">"ok"</span>,</div><div class="line">  <span class="attr">"data"</span>: &#123;</div><div class="line">    <span class="attr">"paginator"</span>: &#123;</div><div class="line">      <span class="attr">"page"</span>: <span class="number">1</span>,</div><div class="line">      <span class="attr">"page_size"</span>: <span class="number">10</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"list"</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">"注释"</span>: <span class="string">"channel=1提现通知列表字段信息"</span>,</div><div class="line">        <span class="attr">"id"</span>: <span class="string">"2016:9:31 //站内信ID"</span>,</div><div class="line">        <span class="attr">"type"</span>: <span class="string">"3 //类型 1Z币提现现金，2Z币提现集分宝，3新集分宝提现"</span>,</div><div class="line">        <span class="attr">"pub_time"</span>: <span class="string">"2016-09-01 15:29:57"</span>,</div><div class="line">        <span class="attr">"app_show"</span>: <span class="string">"0 //客户端显示0全部，1Android，2IOS"</span>,</div><div class="line">        <span class="attr">"content"</span>: <span class="string">"提现集分宝：1集分宝&lt;br/&gt;提现账户：支付宝cstoms@alipay.com&lt;br/&gt;发放状态：发放失败"</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">"注释"</span>: <span class="string">"channel=2邀请好友通知列表字段信息"</span>,</div><div class="line">        <span class="attr">"type"</span>: <span class="string">"1 //1邀请成功"</span>,</div><div class="line">        <span class="attr">"pub_time"</span>: <span class="string">"2016-12-20 11:22:32"</span>,</div><div class="line">        <span class="attr">"content"</span>: <span class="string">"恭喜您成功邀请好友注册一折特卖&lt;br/&gt;获得：1Z币&lt;br/&gt;被邀请好友ID：456"</span>,</div><div class="line">        <span class="attr">"id"</span>: <span class="string">"2016:12:29"</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">"注释"</span>: <span class="string">"channel=3订单抽奖通知列表字段信息"</span>,</div><div class="line">        <span class="attr">"type"</span>: <span class="string">"1 //1结算订单"</span>,</div><div class="line">        <span class="attr">"pub_time"</span>: <span class="string">"2016-12-20 11:19:58"</span>,</div><div class="line">        <span class="attr">"content"</span>: <span class="string">"您有订单从付款状态变成结算状态&lt;br/&gt;获得：1集分宝&lt;br/&gt;订单号：1234567890"</span>,</div><div class="line">        <span class="attr">"id"</span>: <span class="string">"2016:12:24"</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">"注释"</span>: <span class="string">"channel=4兑换审核通知列表字段信息"</span>,</div><div class="line">        <span class="attr">"type"</span>: <span class="string">"1 //1兑换话费，2兑换卡密，3兑换Q币"</span>,</div><div class="line">        <span class="attr">"pub_time"</span>: <span class="string">"2016-12-20 11:09:55"</span>,</div><div class="line">        <span class="attr">"content"</span>: <span class="string">"兑换：防静电&lt;br/&gt;充值手机号：123456789&lt;br/&gt;发放状态：已发放"</span>,</div><div class="line">        <span class="attr">"id"</span>: <span class="string">"2016:12:20"</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">"注释"</span>: <span class="string">"channel=5个人通知列表字段信息，当type=1时，title,pic,url,url_type才有用到"</span>,</div><div class="line">        <span class="attr">"type"</span>: <span class="string">"4 //1个人，2注册，3维权订单扣款，4奖励发放"</span>,</div><div class="line">        <span class="attr">"pub_time"</span>: <span class="string">"2016-12-20 11:09:55"</span>,</div><div class="line">        <span class="attr">"content"</span>: <span class="string">"恭喜您，参与社区活动：一等奖，获得xxxx：12Z币，请到“我赚到的资产这里的Z币明细”查看 获取记录。"</span>,</div><div class="line">        <span class="attr">"id"</span>: <span class="string">"2016:12:23"</span>,</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"标题"</span>,</div><div class="line">        <span class="attr">"pic"</span>: <span class="string">"图片"</span>,</div><div class="line">        <span class="attr">"url"</span>: <span class="string">"跳转url"</span>,</div><div class="line">        <span class="attr">"url_type"</span>: <span class="string">"跳转类型，1分类 2内部 3链接(3跳转html链接/5公测地址/6视频链接) 4专题"</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">"注释"</span>: <span class="string">"channel=0系统通知列表字段信息"</span>,</div><div class="line">        <span class="attr">"type"</span>: <span class="string">"0 //系统公告"</span>,</div><div class="line">        <span class="attr">"pub_time"</span>: <span class="string">"2016-11-24 13:55:15"</span>,</div><div class="line">        <span class="attr">"app_show"</span>: <span class="string">"0 //客户端显示标识 0全部 1android 2ios"</span>,</div><div class="line">        <span class="attr">"content"</span>: <span class="string">"xx"</span>,</div><div class="line">        <span class="attr">"id"</span>: <span class="string">"2016:12:653"</span>,</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"标题"</span>,</div><div class="line">        <span class="attr">"pic"</span>: <span class="string">"图片"</span>,</div><div class="line">        <span class="attr">"url"</span>: <span class="string">"跳转url"</span>,</div><div class="line">        <span class="attr">"url_type"</span>: <span class="string">"跳转类型，1分类 2内部 3链接(3跳转html链接/5公测地址/6视频链接) 4专题"</span>,</div><div class="line">        <span class="attr">"other_url"</span>: <span class="string">""</span>,</div><div class="line">        <span class="attr">"last_time"</span>: <span class="string">"2016-11-24 13:55:15 //系统通知已读截至时间记录"</span></div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###站内信未读接口<br>    public function on_unread_count($user_info, $last_time = ‘’)<br>    接口名：站内信未读接口<br>    请求地址：<a href="http://app.1zhe.com/android/index_bak.php?m=notify&amp;op=index&amp;ac=unread&amp;v=2.4.7" target="_blank" rel="external">http://app.1zhe.com/android/index_bak.php?m=notify&amp;op=index&amp;ac=unread&amp;v=2.4.7</a><br>    请求方式：post</p>
+<h4 id="请求参数-1"><a href="#请求参数-1" class="headerlink" title="请求参数"></a>请求参数</h4><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>server_id</td>
+<td>string</td>
+<td>是</td>
+<td>server_id</td>
+<td>yizhetemai</td>
+</tr>
+<tr>
+<td>app_name</td>
+<td>string</td>
+<td>是</td>
+<td>app</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>app_version</td>
+<td>string</td>
+<td>是</td>
+<td>app</td>
+<td>版本号</td>
+</tr>
+<tr>
+<td>device_name</td>
+<td>string</td>
+<td>是</td>
+<td>设备名称</td>
+<td>Google Nexus S</td>
+</tr>
+<tr>
+<td>device_system_version</td>
+<td>string</td>
+<td>是</td>
+<td>系统版本号</td>
+<td>4.1.1</td>
+</tr>
+<tr>
+<td>last_time</td>
+<td>string</td>
+<td>否</td>
+<td>最新一条消息发布时间</td>
+<td>2016-08-05</td>
+</tr>
+</tbody>
+</table>
+<h4 id="响应示例-1"><a href="#响应示例-1" class="headerlink" title="响应示例"></a>响应示例</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"error_code"</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">"error_message"</span>: <span class="string">"ok"</span>,</div><div class="line">  <span class="attr">"data"</span>: &#123;</div><div class="line">    <span class="attr">"c0"</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">"c1"</span>: <span class="number">15</span>,</div><div class="line">    <span class="attr">"c2"</span>: <span class="number">5</span>,</div><div class="line">    <span class="attr">"c3"</span>: <span class="number">5</span>,</div><div class="line">    <span class="attr">"c4"</span>: <span class="number">5</span>,</div><div class="line">    <span class="attr">"c5"</span>: <span class="number">15</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###站内信读接口<br>    public function on_read($channel, $uid, $ids)<br>    接口名：站内信读接口<br>    请求地址：<a href="http://app.1zhe.com/android/index_bak.php?m=notify&amp;op=index&amp;ac=read&amp;v=2.4.7" target="_blank" rel="external">http://app.1zhe.com/android/index_bak.php?m=notify&amp;op=index&amp;ac=read&amp;v=2.4.7</a><br>    请求方式：post</p>
+<h4 id="请求参数-2"><a href="#请求参数-2" class="headerlink" title="请求参数"></a>请求参数</h4><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>server_id</td>
+<td>string</td>
+<td>是</td>
+<td>server_id</td>
+<td>yizhetemai</td>
+</tr>
+<tr>
+<td>app_name</td>
+<td>string</td>
+<td>是</td>
+<td>app</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>app_version</td>
+<td>string</td>
+<td>是</td>
+<td>app</td>
+<td>版本号</td>
+</tr>
+<tr>
+<td>device_name</td>
+<td>string</td>
+<td>是</td>
+<td>设备名称</td>
+<td>Google Nexus S</td>
+</tr>
+<tr>
+<td>device_system_version</td>
+<td>string</td>
+<td>是</td>
+<td>系统版本号</td>
+<td>4.1.1</td>
+</tr>
+<tr>
+<td>channel</td>
+<td>int</td>
+<td>是</td>
+<td>消息频道，0系统通知，1提现通知，2邀请好友通知，3订单抽奖通知</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ids</td>
+<td>string</td>
+<td>否</td>
+<td>特殊消息id,逗号隔开</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<h4 id="响应示例-2"><a href="#响应示例-2" class="headerlink" title="响应示例"></a>响应示例</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"error_code"</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">"error_message"</span>: <span class="string">"ok"</span>,</div><div class="line">  <span class="attr">"data"</span>: <span class="literal">null</span></div><div class="line">&#125;</div><div class="line">&#123;</div><div class="line">  <span class="attr">"error_code"</span>: <span class="number">100</span>,</div><div class="line">  <span class="attr">"error_message"</span>: <span class="string">"没有未读消息ID"</span>,</div><div class="line">  <span class="attr">"data"</span>: <span class="literal">null</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="聚优惠"><a href="#聚优惠" class="headerlink" title="聚优惠"></a>聚优惠</h1><p>##背景描述</p>
+<ul>
+<li>最开始为HTML5界面实现，从2.4.0开始接入到app接口实现客户端原生界面</li>
+<li>redis部分采用有序集存储分类列表，字符串存储商品等信息并带有活动结束的过期时间</li>
+<li>统计功能，通过redis实现统计，前端都是最新数据，后端通过脚本定时同步到mysql供查询<h2 id="Redis设计-1"><a href="#Redis设计-1" class="headerlink" title="Redis设计"></a>Redis设计</h2></li>
+<li>juyouhui<em><goods|shop|activity></goods|shop|activity></em><id></id></li>
+<li>juyouhui_<goods|shop|activity><em>statistic</em><id></id></goods|shop|activity></li>
+<li>juyouhui<em>list[</em><id>]</id></li>
+<li>juyouhui_statistic_list</li>
+<li>juyouhui_category_list</li>
+<li>juyouhui_category_info<h2 id="表结构-1"><a href="#表结构-1" class="headerlink" title="表结构"></a>表结构</h2></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div></pre></td><td class="code"><pre><div class="line">+---------+---------------------+------+-----+---------+----------------+</div><div class="line">| Field   | Type                | Null | Key | Default | Extra          |</div><div class="line">+---------+---------------------+------+-----+---------+----------------+</div><div class="line">| id      | int(11) unsigned    | NO   | PRI | NULL    | auto_increment |</div><div class="line">| sort    | int(10)             | NO   |     | 0       |                |</div><div class="line">| type    | tinyint(3) unsigned | NO   | MUL | 0       |                |</div><div class="line">| xid     | int(11) unsigned    | NO   |     | NULL    |                |</div><div class="line">| x_start | datetime            | NO   |     | NULL    |                |</div><div class="line">| x_end   | datetime            | NO   | MUL | NULL    |                |</div><div class="line">| cid     | int(11) unsigned    | NO   | MUL | 0       |                |</div><div class="line">| c_sort  | int(10)             | NO   |     | 0       |                |</div><div class="line">+---------+---------------------+------+-----+---------+----------------+</div><div class="line">CREATE TABLE `table_juyouhui` (</div><div class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</div><div class="line">  `sort` int(10) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;排序，越大越靠前&apos;,</div><div class="line">  `type` tinyint(3) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;类型，1商品，2店铺，3活动&apos;,</div><div class="line">  `xid` int(11) unsigned NOT NULL COMMENT &apos;不同类型相应表的id&apos;,</div><div class="line">  `x_start` datetime NOT NULL COMMENT &apos;活动开始时间&apos;,</div><div class="line">  `x_end` datetime NOT NULL COMMENT &apos;活动结束时间&apos;,</div><div class="line">  `cid` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;分类id&apos;,</div><div class="line">  `c_sort` int(10) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;分类排序，越大越靠前&apos;,</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  UNIQUE KEY `idx_typexid` (`type`,`xid`),</div><div class="line">  KEY `idx_time_sort` (`x_end`,`x_start`,`sort`),</div><div class="line">  KEY `idx_cid_sort` (`cid`,`c_sort`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8 COMMENT=&apos;聚优惠首页列表&apos;</div><div class="line"></div><div class="line">+-----------------+---------------------+------+-----+---------+----------------+</div><div class="line">| Field           | Type                | Null | Key | Default | Extra          |</div><div class="line">+-----------------+---------------------+------+-----+---------+----------------+</div><div class="line">| id              | int(11) unsigned    | NO   | PRI | NULL    | auto_increment |</div><div class="line">| title           | varchar(100)        | NO   | MUL | NULL    |                |</div><div class="line">| small_pic       | varchar(100)        | NO   |     | NULL    |                |</div><div class="line">| pic             | text                | NO   |     | NULL    |                |</div><div class="line">| mall            | varchar(45)         | NO   | MUL | NULL    |                |</div><div class="line">| price           | decimal(10,2)       | NO   |     | NULL    |                |</div><div class="line">| start_time      | datetime            | NO   | MUL | NULL    |                |</div><div class="line">| end_time        | datetime            | NO   | MUL | NULL    |                |</div><div class="line">| category        | tinyint(3) unsigned | NO   |     | 0       |                |</div><div class="line">| show            | tinyint(3) unsigned | NO   |     | 0       |                |</div><div class="line">| like            | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| unlike          | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| view            | int(10) unsigned    | NO   | MUL | 0       |                |</div><div class="line">| choice          | tinyint(3) unsigned | NO   |     | 0       |                |</div><div class="line">| reason          | text                | NO   |     | NULL    |                |</div><div class="line">| bottom          | text                | YES  |     | NULL    |                |</div><div class="line">| link            | varchar(500)        | NO   |     | NULL    |                |</div><div class="line">| time            | datetime            | NO   | MUL | NULL    |                |</div><div class="line">| price_desc      | varchar(45)         | YES  |     | NULL    |                |</div><div class="line">| s_sort          | int(11)             | NO   | MUL | 0       |                |</div><div class="line">| a_sort          | int(11)             | NO   | MUL | 0       |                |</div><div class="line">| s_id            | int(11) unsigned    | NO   |     | 0       |                |</div><div class="line">| a_id            | int(11) unsigned    | NO   |     | 0       |                |</div><div class="line">| bak1            | int(11) unsigned    | NO   |     | 0       |                |</div><div class="line">| bak2            | int(11)             | NO   |     | 0       |                |</div><div class="line">| is_taobao       | tinyint(3)          | NO   |     | 1       |                |</div><div class="line">| coupon_url      | varchar(500)        | YES  |     | NULL    |                |</div><div class="line">| num_iid         | bigint(20) unsigned | NO   | MUL | NULL    |                |</div><div class="line">| cid             | int(11) unsigned    | NO   | MUL | 0       |                |</div><div class="line">| is_bid          | tinyint(2) unsigned | NO   |     | 0       |                |</div><div class="line">| tag             | tinyint(3) unsigned | NO   | MUL | 0       |                |</div><div class="line">| view_android    | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| view_ios        | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| sales_android   | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| sales_ios       | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| sales           | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| sales_yesterday | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">+-----------------+---------------------+------+-----+---------+----------------+</div><div class="line">CREATE TABLE `table_juyouhui_goods` (</div><div class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</div><div class="line">  `title` varchar(100) NOT NULL COMMENT &apos;标题&apos;,</div><div class="line">  `small_pic` varchar(100) NOT NULL COMMENT &apos;列表小图片&apos;,</div><div class="line">  `pic` text NOT NULL COMMENT &apos;详情页图片,多张&apos;,</div><div class="line">  `mall` varchar(45) NOT NULL COMMENT &apos;所属商城&apos;,</div><div class="line">  `price` decimal(10,2) NOT NULL COMMENT &apos;价格&apos;,</div><div class="line">  `start_time` datetime NOT NULL COMMENT &apos;活动开始时间&apos;,</div><div class="line">  `end_time` datetime NOT NULL COMMENT &apos;活动结束时间&apos;,</div><div class="line">  `category` tinyint(3) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;所属店铺/活动，0未分类， 1店铺，2活动 ？？？&apos;,</div><div class="line">  `show` tinyint(3) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;是否显示首页，0否，1是&apos;,</div><div class="line">  `like` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;喜欢&apos;,</div><div class="line">  `unlike` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;不喜欢&apos;,</div><div class="line">  `view` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量&apos;,</div><div class="line">  `choice` tinyint(3) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;是否精选， 0否，1是&apos;,</div><div class="line">  `reason` text NOT NULL COMMENT &apos;爆料理由&apos;,</div><div class="line">  `bottom` text COMMENT &apos;文章底部&apos;,</div><div class="line">  `link` varchar(500) NOT NULL COMMENT &apos;链接&apos;,</div><div class="line">  `time` datetime NOT NULL COMMENT &apos;录入时间&apos;,</div><div class="line">  `price_desc` varchar(45) DEFAULT NULL COMMENT &apos;价格说明&apos;,</div><div class="line">  `s_sort` int(11) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;店铺排序&apos;,</div><div class="line">  `a_sort` int(11) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;活动排序&apos;,</div><div class="line">  `s_id` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;所属店铺id&apos;,</div><div class="line">  `a_id` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;所属活动id&apos;,</div><div class="line">  `bak1` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&lt;所属店铺id&gt;&apos;,</div><div class="line">  `bak2` int(11) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;&lt;店铺排序&gt;&apos;,</div><div class="line">  `is_taobao` tinyint(3) NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;标识天猫淘宝1、非淘宝天猫0&apos;,</div><div class="line">  `coupon_url` varchar(500) DEFAULT NULL COMMENT &apos;优惠券链接地址&apos;,</div><div class="line">  `num_iid` bigint(20) unsigned NOT NULL COMMENT &apos;淘宝ID&apos;,</div><div class="line">  `cid` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;分类id&apos;,</div><div class="line">  `is_bid` tinyint(2) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;是否拍价改价，0否，1是&apos;,</div><div class="line">  `tag` tinyint(3) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;显示标签，0无1今日推荐2今日新品3今日新品（重复采集）&apos;,</div><div class="line">  `view_android` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量,来自android&apos;,</div><div class="line">  `view_ios` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量,来自ios&apos;,</div><div class="line">  `sales_android` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量,来自android&apos;,</div><div class="line">  `sales_ios` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量,来自ios&apos;,</div><div class="line">  `sales` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量,来自订单表&apos;,</div><div class="line">  `sales_yesterday` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;昨天销量,来自订单表&apos;,</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  KEY `idx_title` (`title`),</div><div class="line">  KEY `idx_asort` (`a_sort`),</div><div class="line">  KEY `idx_ssort` (`s_sort`),</div><div class="line">  KEY `idx_itime` (`time`),</div><div class="line">  KEY `idx_mall` (`mall`),</div><div class="line">  KEY `idx_view` (`view`),</div><div class="line">  KEY `idx_numiid` (`num_iid`),</div><div class="line">  KEY `idx_cid` (`cid`),</div><div class="line">  KEY `idx_tag` (`tag`),</div><div class="line">  KEY `idx_stime` (`start_time`),</div><div class="line">  KEY `idx_etime` (`end_time`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8 COMMENT=&apos;聚优惠商品表&apos;</div><div class="line"></div><div class="line">+--------------+---------------------+------+-----+---------+----------------+</div><div class="line">| Field        | Type                | Null | Key | Default | Extra          |</div><div class="line">+--------------+---------------------+------+-----+---------+----------------+</div><div class="line">| id           | int(11) unsigned    | NO   | PRI | NULL    | auto_increment |</div><div class="line">| title        | varchar(100)        | NO   | MUL | NULL    |                |</div><div class="line">| small_pic    | varchar(100)        | NO   |     | NULL    |                |</div><div class="line">| pic          | text                | NO   |     | NULL    |                |</div><div class="line">| start_time   | datetime            | NO   | MUL | NULL    |                |</div><div class="line">| end_time     | datetime            | NO   |     | NULL    |                |</div><div class="line">| sort         | int(11)             | NO   | MUL | 0       |                |</div><div class="line">| show         | tinyint(3) unsigned | NO   |     | 1       |                |</div><div class="line">| like         | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| unlike       | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| view         | int(10) unsigned    | NO   | MUL | 0       |                |</div><div class="line">| choiceids    | text                | YES  |     | NULL    |                |</div><div class="line">| desc         | text                | NO   |     | NULL    |                |</div><div class="line">| reason       | text                | NO   |     | NULL    |                |</div><div class="line">| bottom       | text                | YES  |     | NULL    |                |</div><div class="line">| link         | varchar(500)        | NO   |     | NULL    |                |</div><div class="line">| time         | datetime            | NO   | MUL | NULL    |                |</div><div class="line">| is_taobao    | tinyint(3) unsigned | NO   |     | 1       |                |</div><div class="line">| coupon_url   | varchar(500)        | YES  |     | NULL    |                |</div><div class="line">| cid          | int(11) unsigned    | NO   | MUL | 0       |                |</div><div class="line">| logo         | varchar(200)        | NO   |     |         |                |</div><div class="line">| app_pic      | text                | YES  |     | NULL    |                |</div><div class="line">| view_android | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| view_ios     | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">+--------------+---------------------+------+-----+---------+----------------+</div><div class="line">CREATE TABLE `table_juyouhui_shop` (</div><div class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</div><div class="line">  `title` varchar(100) NOT NULL COMMENT &apos;标题&apos;,</div><div class="line">  `small_pic` varchar(100) NOT NULL COMMENT &apos;列表小图片&apos;,</div><div class="line">  `pic` text NOT NULL COMMENT &apos;详情页图片,多张&apos;,</div><div class="line">  `start_time` datetime NOT NULL COMMENT &apos;活动开始时间&apos;,</div><div class="line">  `end_time` datetime NOT NULL COMMENT &apos;活动结束时间&apos;,</div><div class="line">  `sort` int(11) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;排序&apos;,</div><div class="line">  `show` tinyint(3) unsigned NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;是否显示首页，0否，1是&apos;,</div><div class="line">  `like` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;喜欢&apos;,</div><div class="line">  `unlike` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;不喜欢&apos;,</div><div class="line">  `view` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量&apos;,</div><div class="line">  `choiceids` text COMMENT &apos;精选商品IDs&apos;,</div><div class="line">  `desc` text NOT NULL COMMENT &apos;说明&apos;,</div><div class="line">  `reason` text NOT NULL COMMENT &apos;爆料理由&apos;,</div><div class="line">  `bottom` text COMMENT &apos;文章底部&apos;,</div><div class="line">  `link` varchar(500) NOT NULL COMMENT &apos;链接&apos;,</div><div class="line">  `time` datetime NOT NULL COMMENT &apos;录入时间&apos;,</div><div class="line">  `is_taobao` tinyint(3) unsigned NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;天猫淘宝1、非淘宝天猫0&apos;,</div><div class="line">  `coupon_url` varchar(500) DEFAULT NULL COMMENT &apos;优惠券链接地址&apos;,</div><div class="line">  `cid` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;分类id&apos;,</div><div class="line">  `logo` varchar(200) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;logo图片&apos;,</div><div class="line">  `app_pic` text COMMENT &apos;店铺图片链接&apos;,</div><div class="line">  `view_android` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量,来自android&apos;,</div><div class="line">  `view_ios` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量,来自ios&apos;,</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  KEY `idx_title` (`title`),</div><div class="line">  KEY `idx_sort` (`sort`),</div><div class="line">  KEY `idx_setime` (`start_time`,`end_time`),</div><div class="line">  KEY `idx_itime` (`time`),</div><div class="line">  KEY `idx_view` (`view`),</div><div class="line">  KEY `idx_cid` (`cid`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT=&apos;聚优惠店铺表&apos;</div><div class="line"></div><div class="line">+--------------+---------------------+------+-----+---------+----------------+</div><div class="line">| Field        | Type                | Null | Key | Default | Extra          |</div><div class="line">+--------------+---------------------+------+-----+---------+----------------+</div><div class="line">| id           | int(11) unsigned    | NO   | PRI | NULL    | auto_increment |</div><div class="line">| title        | varchar(100)        | NO   | MUL | NULL    |                |</div><div class="line">| small_pic    | varchar(100)        | NO   |     | NULL    |                |</div><div class="line">| pic          | text                | NO   |     | NULL    |                |</div><div class="line">| start_time   | datetime            | NO   | MUL | NULL    |                |</div><div class="line">| end_time     | datetime            | NO   |     | NULL    |                |</div><div class="line">| sort         | int(11)             | NO   | MUL | 0       |                |</div><div class="line">| show         | tinyint(3) unsigned | NO   |     | 1       |                |</div><div class="line">| like         | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| unlike       | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| view         | int(10) unsigned    | NO   | MUL | 0       |                |</div><div class="line">| choiceids    | text                | YES  |     | NULL    |                |</div><div class="line">| desc         | text                | NO   |     | NULL    |                |</div><div class="line">| reason       | text                | NO   |     | NULL    |                |</div><div class="line">| bottom       | text                | YES  |     | NULL    |                |</div><div class="line">| link         | varchar(500)        | NO   |     | NULL    |                |</div><div class="line">| time         | datetime            | NO   | MUL | NULL    |                |</div><div class="line">| is_taobao    | tinyint(3) unsigned | NO   |     | 1       |                |</div><div class="line">| coupon_url   | varchar(500)        | YES  |     | NULL    |                |</div><div class="line">| cid          | int(11) unsigned    | NO   | MUL | 0       |                |</div><div class="line">| logo         | varchar(200)        | NO   |     |         |                |</div><div class="line">| app_pic      | text                | YES  |     | NULL    |                |</div><div class="line">| view_android | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">| view_ios     | int(10) unsigned    | NO   |     | 0       |                |</div><div class="line">+--------------+---------------------+------+-----+---------+----------------+</div><div class="line">CREATE TABLE `table_juyouhui_activity` (</div><div class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,</div><div class="line">  `title` varchar(100) NOT NULL COMMENT &apos;标题&apos;,</div><div class="line">  `small_pic` varchar(100) NOT NULL COMMENT &apos;列表小图片&apos;,</div><div class="line">  `pic` text NOT NULL COMMENT &apos;详情页图片,多张&apos;,</div><div class="line">  `start_time` datetime NOT NULL COMMENT &apos;活动开始时间&apos;,</div><div class="line">  `end_time` datetime NOT NULL COMMENT &apos;活动结束时间&apos;,</div><div class="line">  `sort` int(11) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;排序&apos;,</div><div class="line">  `show` tinyint(3) unsigned NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;是否显示首页，0否，1是&apos;,</div><div class="line">  `like` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;喜欢&apos;,</div><div class="line">  `unlike` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;不喜欢&apos;,</div><div class="line">  `view` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量&apos;,</div><div class="line">  `choiceids` text COMMENT &apos;精选商品IDs&apos;,</div><div class="line">  `desc` text NOT NULL COMMENT &apos;说明&apos;,</div><div class="line">  `reason` text NOT NULL COMMENT &apos;爆料理由&apos;,</div><div class="line">  `bottom` text COMMENT &apos;文章底部&apos;,</div><div class="line">  `link` varchar(500) NOT NULL COMMENT &apos;链接&apos;,</div><div class="line">  `time` datetime NOT NULL COMMENT &apos;录入时间&apos;,</div><div class="line">  `is_taobao` tinyint(3) unsigned NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;天猫淘宝1、非淘宝天猫0&apos;,</div><div class="line">  `coupon_url` varchar(500) DEFAULT NULL COMMENT &apos;优惠券链接地址&apos;,</div><div class="line">  `cid` int(11) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;分类id&apos;,</div><div class="line">  `logo` varchar(200) NOT NULL DEFAULT &apos;&apos; COMMENT &apos;logo图片&apos;,</div><div class="line">  `app_pic` text COMMENT &apos;活动图片链接&apos;,</div><div class="line">  `view_android` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量,来自android&apos;,</div><div class="line">  `view_ios` int(10) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;浏览量,来自ios&apos;,</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  KEY `idx_title` (`title`),</div><div class="line">  KEY `idx_sort` (`sort`),</div><div class="line">  KEY `idx_setime` (`start_time`,`end_time`),</div><div class="line">  KEY `idx_itime` (`time`),</div><div class="line">  KEY `idx_view` (`view`),</div><div class="line">  KEY `idx_cid` (`cid`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT=&apos;聚优惠活动表&apos;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="http://www.myinterface.com/index.php?subject=1zhe.com&amp;version=2.4.0&amp;searchkey=jyh" target="_blank" rel="external">接口详细说明</a></p>
+<h2 id="入口文件-1"><a href="#入口文件-1" class="headerlink" title="入口文件"></a>入口文件</h2><ul>
+<li>/wwwroot/html5/jyh/index.php</li>
+<li>/wwwroot/html5/jyh/detail.php</li>
+<li>/wwwroot/android/version_2.4.0/app_home/jyh/index.php</li>
+<li>/wwwroot/ios/version_2.4.0/app_home/jyh/index.php</li>
+</ul>
+</blockquote>
+<h2 id="主要类-1"><a href="#主要类-1" class="headerlink" title="主要类"></a>主要类</h2><ul>
+<li>/wwwroot/android/version_2.4.0/app_library/cls_admin_juyouhui.php</li>
+<li>/wwwroot/android/version_2.4.0/app_library/cls_site_juyouhui.php</li>
+</ul>
+<p>###聚优惠列表接口</p>
+<pre><code>public function homeList($page = 1, $pageSize = 10, $cid = 0, $first = &apos;&apos;, $last = &apos;&apos;)
+接口名：聚优惠列表接口
+请求地址：http://app.1zhe.com/android/index_bak.php?m=jyh&amp;op=index&amp;ac=list&amp;v=2.4.7
+请求方式：post
+</code></pre><h4 id="请求参数-3"><a href="#请求参数-3" class="headerlink" title="请求参数"></a>请求参数</h4><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>server_id</td>
+<td>string</td>
+<td>是</td>
+<td>server_id</td>
+<td>yizhetemai</td>
+</tr>
+<tr>
+<td>app_name</td>
+<td>string</td>
+<td>是</td>
+<td>app</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>app_version</td>
+<td>string</td>
+<td>是</td>
+<td>app</td>
+<td>版本号</td>
+</tr>
+<tr>
+<td>device_name</td>
+<td>string</td>
+<td>是</td>
+<td>设备名称</td>
+<td>Google Nexus S</td>
+</tr>
+<tr>
+<td>device_system_version</td>
+<td>string</td>
+<td>是</td>
+<td>系统版本号</td>
+<td>4.1.1</td>
+</tr>
+<tr>
+<td>cid</td>
+<td>int</td>
+<td>是</td>
+<td>分类ID</td>
+<td>1</td>
+</tr>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>否</td>
+<td>page</td>
+<td>1</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>int</td>
+<td>否</td>
+<td>page_size</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h4 id="响应示例-3"><a href="#响应示例-3" class="headerlink" title="响应示例"></a>响应示例</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"error_code"</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">"error_message"</span>: <span class="string">"ok"</span>,</div><div class="line">  <span class="attr">"data"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"type"</span>: <span class="number">1</span>,</div><div class="line">      <span class="attr">"id"</span>: <span class="number">32</span>,</div><div class="line">      <span class="attr">"title"</span>: <span class="string">"3D立体眼罩"</span>,</div><div class="line">      <span class="attr">"small_pic"</span>: <span class="string">"http://test.app.1zhe.com/upload/home/juyouhui/banner/2016_11_06_22_09_55_81352.jpg"</span>,</div><div class="line">      <span class="attr">"link"</span>: <span class="string">"https://item.taobao.com/item.htm?id=539590228390"</span>,</div><div class="line">      <span class="attr">"price"</span>: <span class="number">11</span>,</div><div class="line">      <span class="attr">"reason"</span>: <span class="string">"2017新款卡通动漫红包包邮叮当猫鸡利是封小号过新年压岁袋春节...&lt;font color='#477aac'&gt;查看详情&gt;&gt;&lt;/font&gt;"</span>,</div><div class="line">      <span class="attr">"mall"</span>: <span class="string">"淘宝精选"</span>,</div><div class="line">      <span class="attr">"jfb"</span>: <span class="string">"0,//集分宝"</span>,</div><div class="line">      <span class="attr">"coupon_url"</span>: <span class="string">""</span>,</div><div class="line">      <span class="attr">"is_taobao"</span>: <span class="string">"0, //是否淘宝天猫"</span>,</div><div class="line">      <span class="attr">"is_bid"</span>: <span class="string">"0, //是否拍价改价"</span>,</div><div class="line">      <span class="attr">"num_iid"</span>: <span class="number">0</span>,</div><div class="line">      <span class="attr">"s_sort"</span>: <span class="string">"0"</span>,</div><div class="line">      <span class="attr">"a_sort"</span>: <span class="string">"0"</span>,</div><div class="line">      <span class="attr">"tag"</span>: <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###聚优惠详情接口<br>    public function detail($type = 1, $id)<br>    接口名：聚优惠详情接口<br>    请求地址：<a href="http://app.1zhe.com/ios/index_bak.php?m=jyh&amp;op=index&amp;ac=detail&amp;v=2.4.7" target="_blank" rel="external">http://app.1zhe.com/ios/index_bak.php?m=jyh&amp;op=index&amp;ac=detail&amp;v=2.4.7</a><br>    请求方式：post</p>
+<h4 id="请求参数-4"><a href="#请求参数-4" class="headerlink" title="请求参数"></a>请求参数</h4><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>server_id</td>
+<td>string</td>
+<td>是</td>
+<td>server_id</td>
+<td>yizhetemai</td>
+</tr>
+<tr>
+<td>app_name</td>
+<td>string</td>
+<td>是</td>
+<td>app</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>app_version</td>
+<td>string</td>
+<td>是</td>
+<td>app</td>
+<td>版本号</td>
+</tr>
+<tr>
+<td>device_name</td>
+<td>string</td>
+<td>是</td>
+<td>设备名称</td>
+<td>Google Nexus S</td>
+</tr>
+<tr>
+<td>device_system_version</td>
+<td>string</td>
+<td>是</td>
+<td>系统版本号</td>
+<td>4.1.1</td>
+</tr>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>是</td>
+<td>ID</td>
+<td>26</td>
+</tr>
+<tr>
+<td>type</td>
+<td>int</td>
+<td>是</td>
+<td>类型</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h4 id="响应示例-4"><a href="#响应示例-4" class="headerlink" title="响应示例"></a>响应示例</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"error_code"</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">"error_message"</span>: <span class="string">"ok"</span>,</div><div class="line">  <span class="attr">"data"</span>: &#123;</div><div class="line">    <span class="attr">"type"</span>: <span class="string">"聚优惠产品类型，1商品，2店铺，3活动"</span>,</div><div class="line">    <span class="attr">"id"</span>: <span class="number">26</span>,</div><div class="line">    <span class="attr">"title"</span>: <span class="string">"意大利MEDICI笔芯适合"</span>,</div><div class="line">    <span class="attr">"small_pic"</span>: <span class="string">"列表显示图片地址"</span>,</div><div class="line">    <span class="attr">"link"</span>: <span class="string">"https://detail.tmall.com/item.htm?id=21047307338&amp;skuId=45729944062"</span>,</div><div class="line">    <span class="attr">"price"</span>: <span class="number">3.5</span>,</div><div class="line">    <span class="attr">"reason"</span>: <span class="string">"爆料理由"</span>,</div><div class="line">    <span class="attr">"mall"</span>: <span class="string">"天猫精选"</span>,</div><div class="line">    <span class="attr">"jfb"</span>: <span class="string">"集分宝"</span>,</div><div class="line">    <span class="attr">"coupon_url"</span>: <span class="string">"优惠券地址"</span>,</div><div class="line">    <span class="attr">"is_taobao"</span>: <span class="string">"是否淘宝天猫商品，否0，是1"</span>,</div><div class="line">    <span class="attr">"is_bid"</span>: <span class="string">"是否拍下改价 0否，1是"</span>,</div><div class="line">    <span class="attr">"num_iid"</span>: <span class="string">"淘宝天猫商品ID，21047307338"</span>,</div><div class="line">    <span class="attr">"s_sort"</span>: <span class="string">"0"</span>,</div><div class="line">    <span class="attr">"a_sort"</span>: <span class="string">"0"</span>,</div><div class="line">    <span class="attr">"tag"</span>: <span class="string">"显示标签，0无1今日推荐2今日新品3今日新品（重复采集）"</span>,</div><div class="line">    <span class="attr">"pic"</span>: [</div><div class="line">      <span class="string">"http://test.app.1zhe.com/upload/home/juyouhui/detail/2016_10_24_15_19_36_28832.jpg"</span>,</div><div class="line">      <span class="string">"http://test.app.1zhe.com/upload/home/juyouhui/detail/2016_10_24_15_19_36_62569.jpg"</span>,</div><div class="line">      <span class="string">"http://test.app.1zhe.com/upload/home/juyouhui/detail/2016_10_24_15_19_36_26531.jpg"</span>,</div><div class="line">      <span class="string">"http://test.app.1zhe.com/upload/home/juyouhui/detail/2016_10_24_15_19_36_26575.jpg"</span>,</div><div class="line">      <span class="string">"http://test.app.1zhe.com/upload/home/juyouhui/detail/2016_10_24_15_19_36_82476.jpg"</span>,</div><div class="line">      <span class="string">"http://test.app.1zhe.com/upload/home/juyouhui/detail/2016_10_24_15_19_36_56915.jpg"</span></div><div class="line">    ],</div><div class="line">    <span class="attr">"bottom"</span>: <span class="string">"底部后台设置的自由发挥部分"</span>,</div><div class="line">    <span class="attr">"like"</span>: <span class="string">"喜欢数值，1"</span>,</div><div class="line">    <span class="attr">"unlike"</span>: <span class="string">"不喜欢数值，0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###聚优惠统计接口<br>    public function statistic($type, $id, $flag = 1)<br>    接口名：聚优惠统计接口<br>    请求地址：<a href="http://app.1zhe.com/ios/index_bak.php?m=jyh&amp;op=index&amp;ac=statistic&amp;v=2.4.0" target="_blank" rel="external">http://app.1zhe.com/ios/index_bak.php?m=jyh&amp;op=index&amp;ac=statistic&amp;v=2.4.0</a><br>    请求方式：post</p>
+<h4 id="请求参数-5"><a href="#请求参数-5" class="headerlink" title="请求参数"></a>请求参数</h4><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>server_id</td>
+<td>string</td>
+<td>是</td>
+<td>server_id</td>
+<td>yizhetemai</td>
+</tr>
+<tr>
+<td>app_name</td>
+<td>string</td>
+<td>是</td>
+<td>app</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>app_version</td>
+<td>string</td>
+<td>是</td>
+<td>app</td>
+<td>版本号</td>
+</tr>
+<tr>
+<td>device_name</td>
+<td>string</td>
+<td>是</td>
+<td>设备名称</td>
+<td>Google Nexus S</td>
+</tr>
+<tr>
+<td>device_system_version</td>
+<td>string</td>
+<td>是</td>
+<td>系统版本号</td>
+<td>4.1.1</td>
+</tr>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>是</td>
+<td>ID</td>
+<td>1</td>
+</tr>
+<tr>
+<td>type</td>
+<td>int</td>
+<td>否</td>
+<td>类型</td>
+<td>1</td>
+</tr>
+<tr>
+<td>flag</td>
+<td>int</td>
+<td>否</td>
+<td>统计标识 2 喜欢 3 不喜欢 4 android销量 5 ios销量</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="响应示例-5"><a href="#响应示例-5" class="headerlink" title="响应示例"></a>响应示例</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"error_code"</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">"error_message"</span>: <span class="string">"ok"</span>,</div><div class="line">  <span class="attr">"data"</span>: <span class="literal">null</span></div><div class="line">&#125;</div><div class="line">&#123;</div><div class="line">  <span class="attr">"error_code"</span>: <span class="number">100</span>,</div><div class="line">  <span class="attr">"error_message"</span>: <span class="string">"fail"</span>,</div><div class="line">  <span class="attr">"data"</span>: <span class="literal">null</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="签到后的活动弹窗广告"><a href="#签到后的活动弹窗广告" class="headerlink" title="签到后的活动弹窗广告"></a>签到后的活动弹窗广告</h1><p>##背景说明</p>
+<ul>
+<li>从2.3.3版本新增接口</li>
+<li>前端都走redis，后台设置同时更新mysql和redis<br>##Redis设计</li>
+<li>table_app_activity_popads<h2 id="表结构-2"><a href="#表结构-2" class="headerlink" title="表结构"></a>表结构</h2></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">+------------+---------------------+------+-----+---------+----------------+</div><div class="line">| Field      | Type                | Null | Key | Default | Extra          |</div><div class="line">+------------+---------------------+------+-----+---------+----------------+</div><div class="line">| id         | int(10) unsigned    | NO   | PRI | NULL    | auto_increment |</div><div class="line">| title      | varchar(255)        | NO   |     | NULL    |                |</div><div class="line">| pic        | text                | NO   |     | NULL    |                |</div><div class="line">| start_time | datetime            | NO   |     | NULL    |                |</div><div class="line">| end_time   | datetime            | NO   |     | NULL    |                |</div><div class="line">| type       | tinyint(3) unsigned | NO   |     | 1       |                |</div><div class="line">| url        | text                | NO   |     | NULL    |                |</div><div class="line">| showsite   | tinyint(3) unsigned | NO   |     | NULL    |                |</div><div class="line">+------------+---------------------+------+-----+---------+----------------+</div><div class="line">CREATE TABLE `table_app_activity_popads` (</div><div class="line">  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;ID&apos;,</div><div class="line">  `title` varchar(255) NOT NULL COMMENT &apos;标题&apos;,</div><div class="line">  `pic` text NOT NULL COMMENT &apos;图片路径&apos;,</div><div class="line">  `start_time` datetime NOT NULL COMMENT &apos;开始时间&apos;,</div><div class="line">  `end_time` datetime NOT NULL COMMENT &apos;结束时间&apos;,</div><div class="line">  `type` tinyint(3) unsigned NOT NULL DEFAULT &apos;1&apos; COMMENT &apos;类型：1签到后的活动广告&apos;,</div><div class="line">  `url` text NOT NULL COMMENT &apos;跳转位置&apos;,</div><div class="line">  `showsite` tinyint(3) unsigned NOT NULL COMMENT &apos;客户端显示：0，无。1，全部显示。2，IOS。3,安卓&apos;,</div><div class="line">  PRIMARY KEY (`id`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8</div></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="http://www.myinterface.com/index.php?i=activity_pop_ads&amp;subject=1zhe.com&amp;version=2.3.3&amp;searchkey=activity_pop_ads" target="_blank" rel="external">接口详细说明</a></p>
+<h3 id="入口文件-2"><a href="#入口文件-2" class="headerlink" title="入口文件"></a>入口文件</h3><ul>
+<li>/wwwroot/android/version_2.3.3/app_home/advertise/index.php<h2 id="主要类-2"><a href="#主要类-2" class="headerlink" title="主要类"></a>主要类</h2></li>
+<li>/wwwroot/android/version_2.3.3/app_library/cls_activity_popads.php</li>
+</ul>
+</blockquote>
+<p>###活动弹窗广告接口<br>    function set_table_into_redis()<br>    接口名：活动弹窗广告接口<br>    请求地址：<a href="http://app.1zhe.com/android/index_bak.php?m=advertise&amp;op=index&amp;ac=activity_pop_ads&amp;v=2.3.3" target="_blank" rel="external">http://app.1zhe.com/android/index_bak.php?m=advertise&amp;op=index&amp;ac=activity_pop_ads&amp;v=2.3.3</a><br>    请求方式：post</p>
+<h4 id="请求参数-6"><a href="#请求参数-6" class="headerlink" title="请求参数"></a>请求参数</h4><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>app_name</td>
+<td>string</td>
+<td>是</td>
+<td>app 名称</td>
+<td>yizhetemai</td>
+</tr>
+<tr>
+<td>app_version</td>
+<td>string</td>
+<td>是</td>
+<td>app 版本号</td>
+<td>2.4.7</td>
+</tr>
+<tr>
+<td>device_name</td>
+<td>string</td>
+<td>是</td>
+<td>设备名称</td>
+<td>Google Nexus S</td>
+</tr>
+<tr>
+<td>device_system_version</td>
+<td>string</td>
+<td>是</td>
+<td>系统版本号</td>
+<td>4.1.1</td>
+</tr>
+</tbody>
+</table>
+<h4 id="响应示例-6"><a href="#响应示例-6" class="headerlink" title="响应示例"></a>响应示例</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"error_code"</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">"error_message"</span>: <span class="string">"true"</span>,</div><div class="line">  <span class="attr">"data"</span>: &#123;</div><div class="line">    <span class="attr">"list"</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">"pic"</span>: <span class="string">"图片地址"</span>,</div><div class="line">        <span class="attr">"type"</span>: <span class="string">"类型，默认1，现在就活动弹窗"</span>,</div><div class="line">        <span class="attr">"url"</span>: <span class="string">"活动链接，http://www.1zhe.com/html5/pch5/20160229112517.html"</span>,</div><div class="line">        <span class="attr">"title"</span>: <span class="string">"活动标题"</span></div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="微信端获取站内信通知"><a href="#微信端获取站内信通知" class="headerlink" title="微信端获取站内信通知"></a>微信端获取站内信通知</h1><p>##背景说明</p>
+<ul>
+<li>来自站内信数据，新增推送到微信端</li>
+<li>微信授权内的回调接口</li>
+<li><p>通过浏览器头部User-Agent区分Android/IOS，无法区分的默认是Android</p>
+<h2 id="主要类-3"><a href="#主要类-3" class="headerlink" title="主要类"></a>主要类</h2></li>
+<li><p>/library/model/cls_site_notify.php</p>
+</li>
+<li>/library/model/cls_site_wx_notify.php<h2 id="入口文件-3"><a href="#入口文件-3" class="headerlink" title="入口文件"></a>入口文件</h2></li>
+<li>/wwwroot/weixin/html5/notify/index.php</li>
+<li>请求方式GET<h4 id="请求参数-7"><a href="#请求参数-7" class="headerlink" title="请求参数"></a>请求参数</h4>| 参数名       | 类型     | 必填   | 描述                                       | 默认值  |<br>| ——— | —— | —- | —————————————- | —- |<br>| channel   | int    | 是    | 消息频道，0系统通知，1提现通知，2邀请好友通知，3订单抽奖通知，4兑换审核通知，5个人通知 | 1    |<br>| page      | int    | 否    | page                                     | 1    |<br>| page_size | int    | 否    | page_size                                | null |<br>| code      | string | 否    | 微信回调参数                                   | null |<h4 id="响应结果"><a href="#响应结果" class="headerlink" title="响应结果"></a>响应结果</h4></li>
+<li>HTML5页面</li>
+</ul>
+<h1 id="是否提过现金"><a href="#是否提过现金" class="headerlink" title="是否提过现金"></a>是否提过现金</h1><h2 id="背景说明"><a href="#背景说明" class="headerlink" title="背景说明"></a>背景说明</h2><ul>
+<li>Z币提出后，新增提现金，需要提供是否提过现金的接口实现</li>
+<li>2016年2月1日之前的注册的用户都不显示这2元提现现金的</li>
+<li>用户是否提现</li>
+<li>设备号是否提现</li>
+<li>大于等于2.2.8版本开始</li>
+</ul>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: 请求接口</div><div class="line">op=&gt;operation: 获取用户UID</div><div class="line">cond_regtime=&gt;condition: 2016年2月1日之前的注册的用户?</div><div class="line">op_exchanged=&gt;operation: 设置用户/设备都提过现金</div><div class="line">op_exchanged_uid=&gt;operation: 读取缓存用户提过现金标识</div><div class="line">op_post_arr=&gt;operation: 获取POST设备号和服务端id，初始设备号未提过现</div><div class="line">cond_exchanged_uid_cache=&gt;condition: 是否缓存用户提过现金？</div><div class="line">cond_exchanged_uid_db=&gt;condition: 是否用户提过现金的数据库记录（table_cent_record)</div><div class="line">op_cache_exchanged_uid=&gt;operation: 设置用户提过现金到缓存</div><div class="line">op_do_device_serverid=&gt;operation: 设备号/服务端ID是否提过现金逻辑处理</div><div class="line">op_exchanged_uid_ok=&gt;operation: 已经有缓存用户提过现金</div><div class="line">end=&gt;end: 接口输出</div><div class="line"></div><div class="line">st-&gt;op-&gt;cond_regtime</div><div class="line">cond_regtime(yes,right)-&gt;op_exchanged-&gt;end</div><div class="line">cond_regtime(no)-&gt;op_exchanged_uid-&gt;op_post_arr-&gt;cond_exchanged_uid_cache</div><div class="line">cond_exchanged_uid_cache(yes,right)-&gt;op_exchanged_uid_ok-&gt;end</div><div class="line">cond_exchanged_uid_cache(no)-&gt;cond_exchanged_uid_db</div><div class="line">cond_exchanged_uid_db(yes)-&gt;op_cache_exchanged_uid-&gt;end</div><div class="line">cond_exchanged_uid_db(no)-&gt;op_do_device_serverid-&gt;end</div></pre></td></tr></table></figure>
+<p>##Redis设计</p>
+<ul>
+<li>cent_is_withdraw</li>
+</ul>
+<h2 id="主要类方法"><a href="#主要类方法" class="headerlink" title="主要类方法"></a>主要类方法</h2><ul>
+<li>/wwwroot/android/version_2.2.8/app_library/cls_site_app.php<br> /**</li>
+</ul>
+<ul>
+<li>判断设备号或服务端ID是否提现过现金</li>
+<li>@param $device_id 设备号</li>
+<li>@param $server_id 服务端ID</li>
+<li>@param $is_withdraw_flag 是否查提过现金标识</li>
+<li>@return bool<br>  */<br>  function has_exchanged_money(device_id, server_id, $is_withdraw_flag = true)<h3 id="入口文件-4"><a href="#入口文件-4" class="headerlink" title="入口文件"></a>入口文件</h3></li>
+</ul>
+<ul>
+<li>/wwwroot/android/version_2.2.8/app_home/user_info/cent.php</li>
+</ul>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><pre><code>接口名：是否提现现金过
+请求地址：http://app.1zhe.com/ios/index_bak.php?m=user_info&amp;op=cent&amp;ac=money_is_withdraw&amp;v=2.2.8
+请求方式：post
+</code></pre><h4 id="请求参数-8"><a href="#请求参数-8" class="headerlink" title="请求参数"></a>请求参数</h4><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>必填</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u</td>
+<td>string</td>
+<td>是</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>否</td>
+<td>用户登录参数</td>
+<td>null</td>
+</tr>
+<tr>
+<td>app_name</td>
+<td>string</td>
+<td>是</td>
+<td>app 名称</td>
+<td>yizhetemai</td>
+</tr>
+<tr>
+<td>app_version</td>
+<td>string</td>
+<td>是</td>
+<td>app 版本号</td>
+<td>2.2.8</td>
+</tr>
+<tr>
+<td>device_name</td>
+<td>string</td>
+<td>是</td>
+<td>设备名称</td>
+<td>Google Nexus S</td>
+</tr>
+<tr>
+<td>device_system_version</td>
+<td>string</td>
+<td>是</td>
+<td>系统版本号</td>
+<td>4.1.1</td>
+</tr>
+<tr>
+<td>device_id</td>
+<td>string</td>
+<td>是</td>
+<td>设备ID</td>
+<td>354224061654453</td>
+</tr>
+</tbody>
+</table>
+<h4 id="响应示例-7"><a href="#响应示例-7" class="headerlink" title="响应示例"></a>响应示例</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"error_code"</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">"error_message"</span>: <span class="string">"true"</span>,</div><div class="line">  <span class="attr">"data"</span>: &#123;</div><div class="line">    <span class="attr">"is_withdraw"</span>: <span class="number">1</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#维权订单</p>
+<p>##背景说明</p>
+<ul>
+<li>后台维权订单导入列表，需要在扣除用户集分宝/Z币时，产生的用户集分宝不足的标识</li>
+<li>被标识不足时，不能提现兑换等</li>
+<li>只有后台功能列表<br>##Redis设计</li>
+<li>order_rights_no_enough_deduct</li>
+</ul>
+<h1 id="游拍回调接口"><a href="#游拍回调接口" class="headerlink" title="游拍回调接口"></a>游拍回调接口</h1><h2 id="背景说明-1"><a href="#背景说明-1" class="headerlink" title="背景说明"></a>背景说明</h2><ul>
+<li>社区视频话题需要后台上传视频，接入到游拍平台，视频上传到游拍</li>
+<li>游拍需要对视频进行转码，等打水印、转码完成后，回掉一折接口，更新社区视频表播放链接</li>
+</ul>
+<h2 id="主要类-4"><a href="#主要类-4" class="headerlink" title="主要类"></a>主要类</h2><ul>
+<li>/library/interface/cls_youpai_api.php</li>
+</ul>
+<h2 id="入口文件-5"><a href="#入口文件-5" class="headerlink" title="入口文件"></a>入口文件</h2><ul>
+<li>/wwwroot/api.php?m=youpai&amp;act=callback</li>
+</ul>
+<h3 id="接口说明"><a href="#接口说明" class="headerlink" title="接口说明"></a>接口说明</h3><ul>
+<li>签名验证，签名方法<figure class="highlight plain"><figcaption><span>. $video_url . $client_time . $token) ```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">- 5分钟链接有效时间</div><div class="line"></div><div class="line">#### 请求参数</div><div class="line">| 参数名        | 类型     | 必填   | 描述   | 默认值                                      |</div><div class="line">| ---------- | ------ | ---- | ---- | ---------------------------------------- |</div><div class="line">| sign       | string | 是    | 签名   | f80b7b5e59e8f3c722439dd3f84b1576         |</div><div class="line">| time       | int    | 是    | 时间戳  | 1491557540                               |</div><div class="line">| media_uuid | string | 是    | uuid | 3158df7246d91bd327501268                 |</div><div class="line">| url_mp4    | string | 是    | 视频链接 | http://v.3304399.net/media/yizhe/3158df7246d91bd327501268.mp4 |</div><div class="line"></div><div class="line">#### 响应示例</div><div class="line"></div><div class="line">```json</div><div class="line">&#123;</div><div class="line">  &quot;error_code&quot;: 0,</div><div class="line">  &quot;error_message&quot;: &quot;更新成功&quot;,</div><div class="line">  &quot;data&quot;: null</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="社区城市标识同步到一折"><a href="#社区城市标识同步到一折" class="headerlink" title="社区城市标识同步到一折"></a>社区城市标识同步到一折</h1><h2 id="背景说明-2"><a href="#背景说明-2" class="headerlink" title="背景说明"></a>背景说明</h2><ul>
+<li>社区个人主页展示城市标识，然而是在一折我的资料设置城市标识</li>
+<li>设置城市标识接口在社区，同时同步到一折table_users_other表</li>
+</ul>
+<h2 id="主要类-5"><a href="#主要类-5" class="headerlink" title="主要类"></a>主要类</h2><ul>
+<li>/library/interface/cls_community_api.php</li>
+</ul>
+<h2 id="入口文件-6"><a href="#入口文件-6" class="headerlink" title="入口文件"></a>入口文件</h2><ul>
+<li><p>/wwwroot/api.php?m=community&amp;act=sync_city</p>
+<h3 id="接口说明-1"><a href="#接口说明-1" class="headerlink" title="接口说明"></a>接口说明</h3></li>
+<li><p>签名验证，签名方法<figure class="highlight plain"><figcaption><span>. $province. $city . $county . $client_time . $token) ```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- 5分钟链接有效时间</div><div class="line"></div><div class="line">#### 请求参数</div><div class="line"></div><div class="line">| 参数名      | 类型     | 必填   | 描述   | 默认值                              |</div><div class="line">| -------- | ------ | ---- | ---- | -------------------------------- |</div><div class="line">| sign     | string | 是    | 签名   | f80b7b5e59e8f3c722439dd3f84b1576 |</div><div class="line">| time     | int    | 是    | 时间戳  | 1491557540                       |</div><div class="line">| uid      | int    | 是    | uid  | 19562                            |</div><div class="line">| province | int    | 是    | 省    | 350000                           |</div><div class="line">| city     | int    | 是    | 市    | 350200                           |</div><div class="line">| county   | int    | 是    | 县    | 350206                           |</div><div class="line"></div><div class="line"></div><div class="line">#### 响应示例</div><div class="line">```json</div><div class="line">&#123;</div><div class="line">  &quot;error_code&quot;: 0,</div><div class="line">  &quot;error_message&quot;: &quot;同步成功&quot;,</div><div class="line">  &quot;data&quot;: null</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2017/10/23/一折文档/" data-title="Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/10/23/后台ip白名单检查/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/10/23/一折特卖所用域名汇总/"  title="">
+ <strong>下一篇：</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#站内信"><span class="toc-number">1.</span> <span class="toc-text">站内信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis设计"><span class="toc-number">1.1.</span> <span class="toc-text">Redis设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表结构"><span class="toc-number">1.2.</span> <span class="toc-text">表结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入口文件"><span class="toc-number">1.3.</span> <span class="toc-text">入口文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类"><span class="toc-number">1.4.</span> <span class="toc-text">主要类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">响应示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-1"><span class="toc-number">1.4.0.3.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-1"><span class="toc-number">1.4.0.4.</span> <span class="toc-text">响应示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-2"><span class="toc-number">1.4.0.5.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-2"><span class="toc-number">1.4.0.6.</span> <span class="toc-text">响应示例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#聚优惠"><span class="toc-number">2.</span> <span class="toc-text">聚优惠</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis设计-1"><span class="toc-number">2.1.</span> <span class="toc-text">Redis设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表结构-1"><span class="toc-number">2.2.</span> <span class="toc-text">表结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入口文件-1"><span class="toc-number">2.3.</span> <span class="toc-text">入口文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类-1"><span class="toc-number">2.4.</span> <span class="toc-text">主要类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-3"><span class="toc-number">2.4.0.1.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-3"><span class="toc-number">2.4.0.2.</span> <span class="toc-text">响应示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-4"><span class="toc-number">2.4.0.3.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-4"><span class="toc-number">2.4.0.4.</span> <span class="toc-text">响应示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-5"><span class="toc-number">2.4.0.5.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-5"><span class="toc-number">2.4.0.6.</span> <span class="toc-text">响应示例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#签到后的活动弹窗广告"><span class="toc-number">3.</span> <span class="toc-text">签到后的活动弹窗广告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#表结构-2"><span class="toc-number">3.1.</span> <span class="toc-text">表结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#入口文件-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">入口文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类-2"><span class="toc-number">3.2.</span> <span class="toc-text">主要类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-6"><span class="toc-number">3.2.0.1.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-6"><span class="toc-number">3.2.0.2.</span> <span class="toc-text">响应示例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#微信端获取站内信通知"><span class="toc-number">4.</span> <span class="toc-text">微信端获取站内信通知</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类-3"><span class="toc-number">4.1.</span> <span class="toc-text">主要类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入口文件-3"><span class="toc-number">4.2.</span> <span class="toc-text">入口文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-7"><span class="toc-number">4.2.0.1.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应结果"><span class="toc-number">4.2.0.2.</span> <span class="toc-text">响应结果</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#是否提过现金"><span class="toc-number">5.</span> <span class="toc-text">是否提过现金</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景说明"><span class="toc-number">5.1.</span> <span class="toc-text">背景说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程图"><span class="toc-number">5.2.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类方法"><span class="toc-number">5.3.</span> <span class="toc-text">主要类方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#入口文件-4"><span class="toc-number">5.3.1.</span> <span class="toc-text">入口文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口"><span class="toc-number">5.3.2.</span> <span class="toc-text">接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求参数-8"><span class="toc-number">5.3.2.1.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应示例-7"><span class="toc-number">5.3.2.2.</span> <span class="toc-text">响应示例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#游拍回调接口"><span class="toc-number">6.</span> <span class="toc-text">游拍回调接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景说明-1"><span class="toc-number">6.1.</span> <span class="toc-text">背景说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类-4"><span class="toc-number">6.2.</span> <span class="toc-text">主要类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入口文件-5"><span class="toc-number">6.3.</span> <span class="toc-text">入口文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#接口说明"><span class="toc-number">6.3.1.</span> <span class="toc-text">接口说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#社区城市标识同步到一折"><span class="toc-number">7.</span> <span class="toc-text">社区城市标识同步到一折</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景说明-2"><span class="toc-number">7.1.</span> <span class="toc-text">背景说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要类-5"><span class="toc-number">7.2.</span> <span class="toc-text">主要类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入口文件-6"><span class="toc-number">7.3.</span> <span class="toc-text">入口文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#接口说明-1"><span class="toc-number">7.3.1.</span> <span class="toc-text">接口说明</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
