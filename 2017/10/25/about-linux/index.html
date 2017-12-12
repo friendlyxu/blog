@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>about-cookie | 21st</title>
+  <title>about-linux | 21st</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于cookie事件#1.发现是时区问题，结果应该按照cookie设置的时区就可以了2.cookie写入浏览器失败问题，chrome不允许本地设置cookie，改成服务端设置cookie">
-<meta name="keywords" content="cookie">
+  <meta name="description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives –install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives –install /usr/b">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="about-cookie">
-<meta property="og:url" content="http://friendlyxu.github.io/2017/10/24/about-cookie/index.html">
+<meta property="og:title" content="about-linux">
+<meta property="og:url" content="http://friendlyxu.github.io/2017/10/25/about-linux/index.html">
 <meta property="og:site_name" content="21st">
-<meta property="og:description" content="关于cookie事件#1.发现是时区问题，结果应该按照cookie设置的时区就可以了2.cookie写入浏览器失败问题，chrome不允许本地设置cookie，改成服务端设置cookie">
+<meta property="og:description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives –install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives –install /usr/b">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-24T08:28:45.626Z">
+<meta property="og:updated_time" content="2017-12-12T08:57:35.227Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about-cookie">
-<meta name="twitter:description" content="关于cookie事件#1.发现是时区问题，结果应该按照cookie设置的时区就可以了2.cookie写入浏览器失败问题，chrome不允许本地设置cookie，改成服务端设置cookie">
+<meta name="twitter:title" content="about-linux">
+<meta name="twitter:description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives –install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives –install /usr/b">
   
     <link rel="alternate" href="/atom.xml" title="21st" type="application/atom+xml">
   
@@ -63,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-about-cookie" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-about-linux" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2017/10/24/about-cookie/" class="article-date">
-  <time datetime="2017-10-24T08:27:57.000Z" itemprop="datePublished">2017-10-24</time>
+    <a href="/blog/2017/10/25/about-linux/" class="article-date">
+  <time datetime="2017-10-25T02:03:48.000Z" itemprop="datePublished">2017-10-25</time>
 </a>
     
   </div>
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      about-cookie
+      about-linux
     </h1>
   
 
@@ -85,15 +85,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2><span id="guan-yu-cookie-shi-jian">关于cookie事件</span><a href="#guan-yu-cookie-shi-jian" class="header-anchor">#</a></h2><p>1.发现是时区问题，结果应该按照cookie设置的时区就可以了<br>2.cookie写入浏览器失败问题，chrome不允许本地设置cookie，改成服务端设置cookie</p>
+        <h2><span id="qie-huan-python-ban-ben">切换python版本</span><a href="#qie-huan-python-ban-ben" class="header-anchor">#</a></h2><p>1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中</p>
+<ul>
+<li>update-alternatives –install /usr/bin/python python /usr/bin/python2.7 1</li>
+<li>update-alternatives –install /usr/bin/python python /usr/bin/python3.5 2</li>
+</ul>
+<p>2.选择版本</p>
+<ul>
+<li>update-alternatives –config python</li>
+</ul>
+<p>3.删除(一旦我们的系统中不再存在某个 Python 的替代版本时)</p>
+<ul>
+<li>update-alternatives –remove python /usr/bin/python2.7</li>
+</ul>
+<h2><span id="var-lib-docker">/var/lib/docker</span><a href="#var-lib-docker" class="header-anchor">#</a></h2><ul>
+<li>docker rm container_id</li>
+<li>docker rmi image_id</li>
+</ul>
+<h2><span id="debian-9-network-problem">debian 9 network problem</span><a href="#debian-9-network-problem" class="header-anchor">#</a></h2><ul>
+<li>networkctl</li>
+<li>networkctl status</li>
+<li>systemctl status systemd-networkd systemd-resolved</li>
+<li>systemctl restart systemd-networkd systemd-resolved</li>
+</ul>
+<h2><span id="shell-array">shell array</span><a href="#shell-array" class="header-anchor">#</a></h2><p>ids=(1 12 43 54)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-cookie/" data-id="cjb3e9mnw0005kvi5ko5nefu4" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/25/about-linux/" data-id="cjb3e9mnf0000kvi57pbf02h3" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/cookie/">cookie</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
 
     </footer>
   </div>
@@ -101,19 +124,19 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2017/10/25/about-linux/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2017/10/25/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          about-linux
+          Hello World
         
       </div>
     </a>
   
   
-    <a href="/blog/2017/10/24/about-ml/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2017/10/24/about-cookie/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">about-ml</div>
+      <div class="article-nav-title">about-cookie</div>
     </a>
   
 </nav>

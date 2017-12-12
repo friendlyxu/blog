@@ -3,15 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>21st</title>
+  <title>MySQL - show status | 21st</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="21st">
-<meta property="og:url" content="http://friendlyxu.github.io/index.html">
+  <meta name="description" content="#MySQL5.show status    状态名 作用域 详细解释     Aborted_clients Global 由于客户端没有正确关闭连接导致客户端终止而中断的连接数   Aborted_connects Global 试图连接到MySQL服务器而失败的连接数   Binlog_cache_disk_use Global 使用临时二进制日志缓存但超过binlog_cache_size">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL - show status">
+<meta property="og:url" content="http://friendlyxu.github.io/2017/10/25/MySQL/index.html">
 <meta property="og:site_name" content="21st">
+<meta property="og:description" content="#MySQL5.show status    状态名 作用域 详细解释     Aborted_clients Global 由于客户端没有正确关闭连接导致客户端终止而中断的连接数   Aborted_connects Global 试图连接到MySQL服务器而失败的连接数   Binlog_cache_disk_use Global 使用临时二进制日志缓存但超过binlog_cache_size">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-23T08:40:10.734Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="21st">
+<meta name="twitter:title" content="MySQL - show status">
+<meta name="twitter:description" content="#MySQL5.show status    状态名 作用域 详细解释     Aborted_clients Global 由于客户端没有正确关闭连接导致客户端终止而中断的连接数   Aborted_connects Global 试图连接到MySQL服务器而失败的连接数   Binlog_cache_disk_use Global 使用临时二进制日志缓存但超过binlog_cache_size">
   
     <link rel="alternate" href="/atom.xml" title="21st" type="application/atom+xml">
   
@@ -58,94 +62,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Web" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/11/27/Web/" class="article-date">
-  <time datetime="2017-11-27T05:59:59.165Z" itemprop="datePublished">2017-11-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/11/27/Web/">关于Web开发</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2><span id="guan-yu-http-tcp-xie-yi">关于HTTP/TCP协议</span><a href="#guan-yu-http-tcp-xie-yi" class="header-anchor">#</a></h2><h2><span id="guan-yu-linux">关于Linux</span><a href="#guan-yu-linux" class="header-anchor">#</a></h2><h2><span id="guan-yu-apache">关于Apache</span><a href="#guan-yu-apache" class="header-anchor">#</a></h2><h2><span id="guan-yu-nginx-yu-apache-de-bi-jiao">关于Nginx与Apache的比较</span><a href="#guan-yu-nginx-yu-apache-de-bi-jiao" class="header-anchor">#</a></h2><h2><span id="guan-yu-php">关于PHP</span><a href="#guan-yu-php" class="header-anchor">#</a></h2><p>1.基础学习，官方手册，php the rights way<br>2.代码练习，github，the popular framework<br>3.组件学习，composer，symfony，zendframework，laravel，aura<br>4.规范学习，php framework interop group，phpDocumentor，php-cs-fixer，phpfmt<br>5.调试练习，phpunit，phpdbg<br>6.性能调优，xhprof，<a href="https://github.com/patrickallaert/php-apm-web" target="_blank" rel="external">the apm for php</a><br>7.模式设计，<a href="http://designpatternsphp.readthedocs.io/en/latest/" target="_blank" rel="external">DesignPatternsPHP from github</a></p>
-<h3><span id="ying-gai-ju-bei-de-neng-li-zong-jie">应该具备的能力总结</span><a href="#ying-gai-ju-bei-de-neng-li-zong-jie" class="header-anchor">#</a></h3><p>1.phpdoc<br>2.协议规则<br>3.算法规则<br>4.算法/协议的代码实现<br>5.代码的可读性，可维护性<br>6.代码的性能<br>7.架构的理解</p>
-<ul>
-<li>网络架构</li>
-<li>服务架构</li>
-<li>代码架构</li>
-</ul>
-<p>8.业务建模，领域模型</p>
-<p>a.前端框架使用，理解<br>(angular.js,d3.js,three.js)</p>
-<h2><span id="guan-yu-mysql">关于MySQL</span><a href="#guan-yu-mysql" class="header-anchor">#</a></h2><p>1.表设计<br>2.SQL查询及优化<br>3.新技术理解<br>4.是否真的需要分库分表，替代方案TiDB？</p>
-<ul>
-<li>从代码上的分库分表都会有局限性</li>
-</ul>
-<h2><span id="guan-yu-js">关于JS</span><a href="#guan-yu-js" class="header-anchor">#</a></h2><p>1.基础学习</p>
-<ul>
-<li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">ECMAScript 6 入门</a></li>
-<li><a href="http://w3schools.bootcss.com/js/default.html" target="_blank" rel="external">w3schools</a></li>
-</ul>
-<p>2.前端框架</p>
-<ul>
-<li>React.js(Facebook)，Angular.js(Google)，JQuery.js</li>
-<li>D3.js，D3 is a JavaScript library for visualizing data with HTML, SVG, and CSS.</li>
-<li>Three.js，A JavaScript 3D Library which makes WebGL simpler.</li>
-<li>HLS.js, 基于MSE的HLS实现，实现了HTTP Live Streaming客户端，视频直播</li>
-</ul>
-<p>3.应用理解</p>
-<h2><span id="guan-yu-html">关于HTML</span><a href="#guan-yu-html" class="header-anchor">#</a></h2><p>1.基础学习，<a href="http://w3schools.bootcss.com/html/default.html" target="_blank" rel="external">w3schools</a></p>
-<h2><span id="guan-yu-css">关于CSS</span><a href="#guan-yu-css" class="header-anchor">#</a></h2><p>1.基础学习，<a href="http://w3schools.bootcss.com/css/default.html" target="_blank" rel="external">w3schools</a><br>2.框架应用CSS Frameworks</p>
-<ul>
-<li>Bootstrap</li>
-<li><a href="http://w3schools.bootcss.com/w3css/default.html" target="_blank" rel="external">W3.CSS</a></li>
-</ul>
-<h2><span id="guan-yu-api-she-ji">关于API设计</span><a href="#guan-yu-api-she-ji" class="header-anchor">#</a></h2><p>1.API安全<br>2.API规范<br>3.API性能<br>4.API工具，Swagger，PostMan<br>5.契约设计(<a href="https://zhuanlan.zhihu.com/p/26385106" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/26385106</a>)</p>
-<ul>
-<li>API适配器</li>
-</ul>
-<div id="flowchart-0" class="flow-chart"></div>
-
-<ul>
-<li>API 使用的第一原则：不要『相信』前端提供的数据，不要『相信』后台返回的数据。</li>
-</ul>
-<h2><span id="web-security-web-an-quan-firewalls-and-proxy-filters">Web security(Web安全，Firewalls and Proxy Filters)</span><a href="#web-security-web-an-quan-firewalls-and-proxy-filters" class="header-anchor">#</a></h2><h2><span id="web-scaling-web-mo-kuai-hua-routers">Web scaling(Web模块化，Routers)</span><a href="#web-scaling-web-mo-kuai-hua-routers" class="header-anchor">#</a></h2><h2><span id="web-speed-web-jia-su-caches">Web speed(Web加速，Caches)</span><a href="#web-speed-web-jia-su-caches" class="header-anchor">#</a></h2><h1><span id="xian-dai-hua-web-php-kai-fa-zhuang-bei">现代化WEB-PHP开发装备</span><a href="#xian-dai-hua-web-php-kai-fa-zhuang-bei" class="header-anchor">#</a></h1><p><img src="http://www.phptherightway.com/images/banners/btn1-120x90.png" alt="PHP: The Right Way"><br>1.<a href="http://www.phptherightway.com" target="_blank" rel="external">www.phptherightway.com</a></p>
-<h1><span id="qian-duan">前端</span><a href="#qian-duan" class="header-anchor">#</a></h1><p><a href="http://www.imooc.com/article/20692" target="_blank" rel="external">MOOC</a></p>
-<h2><span id="algorithms">Algorithms</span><a href="#algorithms" class="header-anchor">#</a></h2><h3><span id="fast-paxo-fen-bu-shi-yi-zhi-xing-suan-fa-paxo-gai-jin-ban">Fast Paxo 分布式一致性算法（Paxo改进版）</span><a href="#fast-paxo-fen-bu-shi-yi-zhi-xing-suan-fa-paxo-gai-jin-ban" class="header-anchor">#</a></h3><h2><span id="ml-ru-he-zhu-li-web-kai-fa">ML如何助力Web开发</span><a href="#ml-ru-he-zhu-li-web-kai-fa" class="header-anchor">#</a></h2><p>php-ml</p>
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: 前端
-op_agent=>operation: 反向代理
-op_qy=>operation: 契约 or 开发环境 or 生产环境
-
-st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/11/27/Web/" data-id="cjb3e9mno0003kvi5f26ysw2e" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MySQL" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-MySQL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2017/10/25/MySQL/" class="article-date">
   <time datetime="2017-10-25T09:48:48.758Z" itemprop="datePublished">2017-10-25</time>
@@ -158,8 +75,8 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/10/25/MySQL/">MySQL - show status</a>
+    <h1 class="article-title" itemprop="name">
+      MySQL - show status
     </h1>
   
 
@@ -844,273 +761,28 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/10/25/hello-world/" class="article-date">
-  <time datetime="2017-10-25T09:48:48.758Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/blog/2017/11/27/Web/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/10/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span><a href="#quick-start" class="header-anchor">#</a></h2><h3><span id="create-a-new-post">Create a new post</span><a href="#create-a-new-post" class="header-anchor">#</a></h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3><span id="run-server">Run server</span><a href="#run-server" class="header-anchor">#</a></h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span><a href="#generate-static-files" class="header-anchor">#</a></h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span><a href="#deploy-to-remote-sites" class="header-anchor">#</a></h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/25/hello-world/" data-id="cjb3e9mny0008kvi52mw0wg7w" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-about-linux" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/10/25/about-linux/" class="article-date">
-  <time datetime="2017-10-25T02:03:48.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          关于Web开发
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/10/25/about-linux/">about-linux</a>
-    </h1>
   
+    <a href="/blog/2017/10/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2><span id="qie-huan-python-ban-ben">切换python版本</span><a href="#qie-huan-python-ban-ben" class="header-anchor">#</a></h2><p>1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中</p>
-<ul>
-<li>update-alternatives –install /usr/bin/python python /usr/bin/python2.7 1</li>
-<li>update-alternatives –install /usr/bin/python python /usr/bin/python3.5 2</li>
-</ul>
-<p>2.选择版本</p>
-<ul>
-<li>update-alternatives –config python</li>
-</ul>
-<p>3.删除(一旦我们的系统中不再存在某个 Python 的替代版本时)</p>
-<ul>
-<li>update-alternatives –remove python /usr/bin/python2.7</li>
-</ul>
-<h2><span id="var-lib-docker">/var/lib/docker</span><a href="#var-lib-docker" class="header-anchor">#</a></h2><ul>
-<li>docker rm container_id</li>
-<li>docker rmi image_id</li>
-</ul>
-<h2><span id="debian-9-network-problem">debian 9 network problem</span><a href="#debian-9-network-problem" class="header-anchor">#</a></h2><ul>
-<li>networkctl</li>
-<li>networkctl status</li>
-<li>systemctl status systemd-networkd systemd-resolved</li>
-<li>systemctl restart systemd-networkd systemd-resolved</li>
-</ul>
-<h2><span id="shell-array">shell array</span><a href="#shell-array" class="header-anchor">#</a></h2><p>ids=(1 12 43 54)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/25/about-linux/" data-id="cjb3e9mnf0000kvi57pbf02h3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-about-cookie" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/10/24/about-cookie/" class="article-date">
-  <time datetime="2017-10-24T08:27:57.000Z" itemprop="datePublished">2017-10-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/10/24/about-cookie/">about-cookie</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2><span id="guan-yu-cookie-shi-jian">关于cookie事件</span><a href="#guan-yu-cookie-shi-jian" class="header-anchor">#</a></h2><p>1.发现是时区问题，结果应该按照cookie设置的时区就可以了<br>2.cookie写入浏览器失败问题，chrome不允许本地设置cookie，改成服务端设置cookie</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-cookie/" data-id="cjb3e9mnw0005kvi5ko5nefu4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/cookie/">cookie</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-about-ml" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/10/24/about-ml/" class="article-date">
-  <time datetime="2017-10-24T06:04:24.000Z" itemprop="datePublished">2017-10-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/10/24/about-ml/">about-ml</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2><span id="algorithms">Algorithms</span><a href="#algorithms" class="header-anchor">#</a></h2><h3><span id="supervised-learning">Supervised Learning</span><a href="#supervised-learning" class="header-anchor">#</a></h3><ul>
-<li>Regression<ul>
-<li>Generalized Linear Regression</li>
-<li>Gaussian Processes</li>
-<li>Isotonic Regression</li>
-</ul>
-</li>
-<li>Classification<ul>
-<li>Support Vector Machines (SVM)</li>
-<li>Linear and Quadratic Discriminant Analysis</li>
-<li>Decision Trees</li>
-<li>K Nearest Neighbors</li>
-<li>Naive Bayes</li>
-<li>Neural Networks</li>
-<li>Ensemble Methods</li>
-<li>Kernel Approximation</li>
-<li>Adaboost</li>
-</ul>
-</li>
-</ul>
-<h3><span id="unsupervised-learning">Unsupervised Learning</span><a href="#unsupervised-learning" class="header-anchor">#</a></h3><ul>
-<li>Clustering<ul>
-<li>K-Means</li>
-<li>Gaussian Mixture Models</li>
-<li>Spectral Clustering</li>
-<li>Manifold Learning</li>
-<li>Hierarchical Clustering</li>
-<li>Affinity Propagation</li>
-<li>DBSCAN</li>
-<li>Birch</li>
-</ul>
-</li>
-<li>Dimensionality Reduction<ul>
-<li>Principal Component Analysis</li>
-<li>Linear Discriminant Analysis</li>
-<li>Locally linear embedding</li>
-<li>Laplacian Eigenmaps</li>
-<li>Isomap</li>
-<li>Spectral Embedding</li>
-<li>Feature Agglomeration</li>
-</ul>
-</li>
-</ul>
-<h3><span id="reinforcement-learning">Reinforcement Learning</span><a href="#reinforcement-learning" class="header-anchor">#</a></h3><ul>
-<li>Markov Decision Processes</li>
-<li>Q-Learning</li>
-<li>Sarsa</li>
-<li>A-Learning</li>
-</ul>
-<h3><span id="deep-learning">Deep Learning</span><a href="#deep-learning" class="header-anchor">#</a></h3><ul>
-<li>Convolutional Neural Network (CNN)</li>
-<li>Restricted Boltzmann Machines</li>
-<li>Recurrent Neural Network (RNN)<ul>
-<li>Long Short Term Memory</li>
-</ul>
-</li>
-</ul>
-<h2><span id="model-selection-and-evaluation">Model Selection and Evaluation</span><a href="#model-selection-and-evaluation" class="header-anchor">#</a></h2><ul>
-<li>Cross-validation</li>
-<li>Grid Search</li>
-<li>Model Evaluation</li>
-<li>Model Persistence</li>
-<li>Validation Curves</li>
-</ul>
-<h2><span id="frameworks">Frameworks</span><a href="#frameworks" class="header-anchor">#</a></h2><ul>
-<li>TensorFlow</li>
-<li>Caffe2/Caffe</li>
-<li>Theano</li>
-<li>Torch</li>
-<li>Chainer</li>
-<li>OpenBLAS</li>
-<li>CUDA</li>
-<li>CUDNN</li>
-</ul>
-<h2><span id="roadmap">Roadmap</span><a href="#roadmap" class="header-anchor">#</a></h2><ul>
-<li>Foundation</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-ml/" data-id="cjb3e9mnx0006kvi5gqbxreqw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
