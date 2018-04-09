@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <title>about-linux | 21st</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives –install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives –install /usr/b">
+  <meta name="description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives —install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives —install /usr/b">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="about-linux">
 <meta property="og:url" content="http://friendlyxu.github.io/2017/12/26/about-linux/index.html">
 <meta property="og:site_name" content="21st">
-<meta property="og:description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives –install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives –install /usr/b">
+<meta property="og:description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives —install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives —install /usr/b">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-12-26T06:19:02.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="about-linux">
-<meta name="twitter:description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives –install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives –install /usr/b">
+<meta name="twitter:description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives —install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives —install /usr/b">
   
     <link rel="alternate" href="/atom.xml" title="21st" type="application/atom+xml">
   
@@ -24,13 +24,13 @@
     <link rel="icon" href="/favicon.png">
   
   
-  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 </head>
 
 <body>
-  <div id="container">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
@@ -87,16 +87,16 @@
       
         <h2><span id="qie-huan-python-ban-ben">切换python版本</span><a href="#qie-huan-python-ban-ben" class="header-anchor">#</a></h2><p>1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中</p>
 <ul>
-<li>update-alternatives –install /usr/bin/python python /usr/bin/python2.7 1</li>
-<li>update-alternatives –install /usr/bin/python python /usr/bin/python3.5 2</li>
+<li>update-alternatives —install /usr/bin/python python /usr/bin/python2.7 1</li>
+<li>update-alternatives —install /usr/bin/python python /usr/bin/python3.5 2</li>
 </ul>
 <p>2.选择版本</p>
 <ul>
-<li>update-alternatives –config python</li>
+<li>update-alternatives —config python</li>
 </ul>
 <p>3.删除(一旦我们的系统中不再存在某个 Python 的替代版本时)</p>
 <ul>
-<li>update-alternatives –remove python /usr/bin/python2.7</li>
+<li>update-alternatives —remove python /usr/bin/python2.7</li>
 </ul>
 <h2><span id="var-lib-docker">/var/lib/docker</span><a href="#var-lib-docker" class="header-anchor">#</a></h2><ul>
 <li>docker rm container_id</li>
@@ -117,7 +117,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/12/26/about-linux/" data-id="cjf9a5pq10003ppi593l7t1lo" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/12/26/about-linux/" data-id="cjfruoymb0003yci5kzmcp4lr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
@@ -247,5 +247,22 @@
 <script src="/blog/js/script.js"></script>
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
 </body>
 </html>

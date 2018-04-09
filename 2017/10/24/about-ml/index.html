@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <title>about-ml | 21st</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="21st">
 <meta property="og:description" content="Algorithms#Supervised Learning# Regression Generalized Linear Regression Gaussian Processes Isotonic Regression   Classification Support Vector Machines (SVM) Linear and Quadratic Discriminant Analysi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-24T02:27:12.061Z">
+<meta property="og:updated_time" content="2018-04-09T06:19:39.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="about-ml">
 <meta name="twitter:description" content="Algorithms#Supervised Learning# Regression Generalized Linear Regression Gaussian Processes Isotonic Regression   Classification Support Vector Machines (SVM) Linear and Quadratic Discriminant Analysi">
@@ -23,13 +23,13 @@
     <link rel="icon" href="/favicon.png">
   
   
-  <link rel="stylesheet" href="/blog/css/style.css">
+  <link rel="stylesheet" href="/blog/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 </head>
 
 <body>
-  <div id="container">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
@@ -161,11 +161,17 @@
 <h2><span id="roadmap">Roadmap</span><a href="#roadmap" class="header-anchor">#</a></h2><ul>
 <li>Foundation</li>
 </ul>
-<h2><span id="ai">AI</span><a href="#ai" class="header-anchor">#</a></h2><h1><span id="suan-fa">算法</span><a href="#suan-fa" class="header-anchor">#</a></h1><h1><span id="suan-li">算力</span><a href="#suan-li" class="header-anchor">#</a></h1><h1><span id="shu-ju">数据</span><a href="#shu-ju" class="header-anchor">#</a></h1>
+<h2><span id="ai">AI</span><a href="#ai" class="header-anchor">#</a></h2><h1><span id="suan-fa">算法</span><a href="#suan-fa" class="header-anchor">#</a></h1><h1><span id="suan-li">算力</span><a href="#suan-li" class="header-anchor">#</a></h1><h1><span id="shu-ju">数据</span><a href="#shu-ju" class="header-anchor">#</a></h1><h2><span id="training-and-loss">Training and Loss</span><a href="#training-and-loss" class="header-anchor">#</a></h2><ul>
+<li><p>Mean square error(MSE) <strong>均方误差</strong></p>
+<script type="math/tex; mode=display">MSE = \frac{1}{N} \sum_{(x,y)\in D} (y - prediction(x))^2</script></li>
+<li><p>Although MSE is commonly-used in machine learning, it is neither the only practical loss function nor the best loss function for all circumstances.</p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-ml/" data-id="cjf9a5pq30005ppi50nga9pdz" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/24/about-ml/" data-id="cjfruoyme0005yci57c2eys7g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,5 +294,22 @@
 <script src="/blog/js/script.js"></script>
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
 </body>
 </html>
