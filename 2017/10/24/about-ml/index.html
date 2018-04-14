@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="21st">
 <meta property="og:description" content="Algorithms#Supervised Learning# Regression Generalized Linear Regression Gaussian Processes Isotonic Regression   Classification Support Vector Machines (SVM) Linear and Quadratic Discriminant Analysi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-11T05:45:45.543Z">
+<meta property="og:updated_time" content="2018-04-14T06:25:04.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="about-ml">
 <meta name="twitter:description" content="Algorithms#Supervised Learning# Regression Generalized Linear Regression Gaussian Processes Isotonic Regression   Classification Support Vector Machines (SVM) Linear and Quadratic Discriminant Analysi">
@@ -39,6 +39,10 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">21st</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">21世纪</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -167,7 +171,7 @@
 <li>算力</li>
 <li>数据</li>
 </ul>
-<h2><span id="training-and-loss">Training and Loss</span><a href="#training-and-loss" class="header-anchor">#</a></h2><ul>
+<h2><span id="machine-learning-crash-course">Machine Learning Crash Course</span><a href="#machine-learning-crash-course" class="header-anchor">#</a></h2><h3><span id="training-and-loss">Training and Loss</span><a href="#training-and-loss" class="header-anchor">#</a></h3><ul>
 <li><p>Mean square error(MSE) <strong>均方误差</strong></p>
 <script type="math/tex; mode=display">MSE = \frac{1}{N} \sum_{(x,y)\in D} (y - prediction(x))^2</script></li>
 <li><p>Although MSE is commonly-used in machine learning, it is neither the only practical loss function nor the best loss function for all circumstances.</p>
@@ -178,11 +182,36 @@
 <li>a direction</li>
 <li>a magnitude</li>
 </ul>
+<h3><span id="tensorflow">TensorFlow</span><a href="#tensorflow" class="header-anchor">#</a></h3><p>The following table summarizes the purposes of the different layers:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Toolkit(s)</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estimator(tf.estimator)</td>
+<td>High-level,OOP API</td>
+</tr>
+<tr>
+<td>tf.layers/tf.losses/tf.metrics</td>
+<td>Libraries for common model components</td>
+</tr>
+<tr>
+<td>TensorFlow</td>
+<td>Lower-level APIs</td>
+</tr>
+</tbody>
+</table>
+</div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-ml/" data-id="cjfw1u2590005jti5nsrplmlm" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/24/about-ml/" data-id="cjfz09lbj00052pi5gnmkhl37" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
@@ -321,7 +350,6 @@
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
