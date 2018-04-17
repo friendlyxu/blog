@@ -64,6 +64,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/17/js/" class="article-date">
+  <time datetime="2018-04-17T10:11:55.000Z" itemprop="datePublished">2018-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/17/js/">Js</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1><span id="mo-kuai-hua-bian-cheng-jin-ji">模块化编程晋级</span><a href="#mo-kuai-hua-bian-cheng-jin-ji" class="header-anchor">#</a></h1><h2><span id="javascript-mo-kuai-hua-bian-cheng-yi-mo-kuai-de-xie-fa">Javascript模块化编程（一）：模块的写法</span><a href="#javascript-mo-kuai-hua-bian-cheng-yi-mo-kuai-de-xie-fa" class="header-anchor">#</a></h2><h3><span id="yi-yuan-shi-xie-fa">一、原始写法</span><a href="#yi-yuan-shi-xie-fa" class="header-anchor">#</a></h3><p>这种做法的缺点很明显：”污染”了全局变量，无法保证不与其他模块发生变量名冲突，而且模块成员之间看不出直接关系。</p>
+<h3><span id="er-dui-xiang-xie-fa">二、对象写法</span><a href="#er-dui-xiang-xie-fa" class="header-anchor">#</a></h3><p>这样的写法会暴露所有模块成员，内部状态可以被外部改写。比如，外部代码可以直接改变内部计数器的值。</p>
+<h3><span id="san-li-ji-zhi-xing-han-shu-xie-fa">三、立即执行函数写法</span><a href="#san-li-ji-zhi-xing-han-shu-xie-fa" class="header-anchor">#</a></h3><p>外部代码无法读取内部的_count变量。</p>
+<pre><code class="lang-javascript">    var module1 = (function(){
+　　　　var _count = 0;
+　　　　var m1 = function(){
+　　　　　　//...
+　　　　};
+　　　　var m2 = function(){
+　　　　　　//...
+　　　　};
+　　　　return {
+　　　　　　m1 : m1,
+　　　　　　m2 : m2
+　　　　};
+　　})();
+</code></pre>
+<h3><span id="si-fang-da-mo-shi">四、放大模式</span><a href="#si-fang-da-mo-shi" class="header-anchor">#</a></h3><p>在浏览器环境中，模块的各个部分通常都是从网上获取的，有时无法知道哪个部分会先加载。第一个执行的部分有可能加载一个不存在空对象</p>
+<pre><code class="lang-javascript">　　var module1 = (function (mod){
+　　　　mod.m3 = function () {
+　　　　　　//...
+　　　　};
+　　　　return mod;
+　　})(module1);
+</code></pre>
+<h3><span id="wu-kuan-fang-da-mo-shi-loose-augmentation">五、宽放大模式（Loose augmentation）</span><a href="#wu-kuan-fang-da-mo-shi-loose-augmentation" class="header-anchor">#</a></h3><pre><code class="lang-javascript">　　var module1 = ( function (mod){
+　　　　//...
+　　　　return mod;
+　　})(window.module1 || {});
+</code></pre>
+<h3><span id="liu-shu-ru-quan-ju-bian-liang">六、输入全局变量</span><a href="#liu-shu-ru-quan-ju-bian-liang" class="header-anchor">#</a></h3><p>独立性是模块的重要特点，模块内部最好不与程序的其他部分直接交互。<br>为了在模块内部调用全局变量，必须显式地将其他变量输入模块。</p>
+<pre><code class="lang-javascript">　　var module1 = (function ($, YAHOO) {
+　　　　//...
+　　})(jQuery, YAHOO);
+</code></pre>
+<ul>
+<li>AMD是”Asynchronous Module Definition”的缩写，意思就是”异步模块定义”。</li>
+<li><p>所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。</p>
+</li>
+<li><p>AMD也采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：require([module], callback);</p>
+<h1><span id="kua-yu">跨域</span><a href="#kua-yu" class="header-anchor">#</a></h1></li>
+</ul>
+<p>CORS头字段以及window.postMessage</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://friendlyxu.github.io/2018/04/17/js/" data-id="cjg3ifpup00072oi5wlilnyzk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Web" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/12/Web/" class="article-date">
@@ -154,7 +239,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2018/04/12/Web/" data-id="cjfz09lbc00012pi5kkm2hz32" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2018/04/12/Web/" data-id="cjg3ifpuh00012oi5a1u6y8un" class="article-share-link">Share</a>
       
       
     </footer>
@@ -191,7 +276,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/12/28/rust-learning/" data-id="cjfz09lbl00072pi5zw9kuepa" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/12/28/rust-learning/" data-id="cjg3ifpuq000a2oi53xblx5d8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,7 +340,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/12/26/about-linux/" data-id="cjfz09lbg00032pi5qx6u251z" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/12/26/about-linux/" data-id="cjg3ifpuk00032oi5w0qslfy1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -962,7 +1047,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/25/MySQL/" data-id="cjfz09lb800002pi54e8zlnru" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/25/MySQL/" data-id="cjg3ifpuc00002oi5xih1qvk0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1011,7 +1096,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/25/hello-world/" data-id="cjfz09lbk00062pi5wufl8cl2" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/25/hello-world/" data-id="cjg3ifpuo00062oi5xvdgdw10" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1048,7 +1133,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-cookie/" data-id="cjfz09lbe00022pi5adi159zb" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/24/about-cookie/" data-id="cjg3ifpuj00022oi5ulrd30z5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li></ul>
@@ -1204,7 +1289,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-ml/" data-id="cjfz09lbj00052pi5gnmkhl37" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/24/about-ml/" data-id="cjg3ifpun00052oi5l611vsd1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
@@ -1222,13 +1307,20 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a></li></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/">ML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/">ML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
     </div>
   </div>
 
@@ -1238,7 +1330,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ML/" style="font-size: 10px;">ML</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a>
+      <a href="/tags/ML/" style="font-size: 10px;">ML</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -1260,6 +1352,10 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       <ul>
         
           <li>
+            <a href="/2018/04/17/js/">Js</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/12/Web/">Web</a>
           </li>
         
@@ -1273,10 +1369,6 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
         
           <li>
             <a href="/2017/10/25/MySQL/">MySQL - show status</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/25/hello-world/">Hello World</a>
           </li>
         
       </ul>
