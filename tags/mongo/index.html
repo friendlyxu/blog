@@ -3,20 +3,15 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>about-linux | 21st</title>
+  <title>Tag: mongo | 21st</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives —install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives —install /usr/b">
-<meta name="keywords" content="linux">
-<meta property="og:type" content="article">
-<meta property="og:title" content="about-linux">
-<meta property="og:url" content="http://friendlyxu.github.io/2017/12/26/about-linux/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="21st">
+<meta property="og:url" content="http://friendlyxu.github.io/tags/mongo/index.html">
 <meta property="og:site_name" content="21st">
-<meta property="og:description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives —install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives —install /usr/b">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-26T06:19:02.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about-linux">
-<meta name="twitter:description" content="切换python版本#1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中  update-alternatives —install /usr/bin/python python /usr/bin/python2.7 1 update-alternatives —install /usr/b">
+<meta name="twitter:title" content="21st">
   
     <link rel="alternate" href="/atom.xml" title="21st" type="application/atom+xml">
   
@@ -67,90 +62,39 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-about-linux" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/26/about-linux/" class="article-date">
-  <time datetime="2017-12-26T06:18:48.000Z" itemprop="datePublished">2017-12-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      about-linux
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2018/04/17/mongo/" class="archive-article-date">
+  <time datetime="2018-04-17T10:35:55.000Z" itemprop="datePublished">4月 17</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/04/17/mongo/">MongoDB</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2><span id="qie-huan-python-ban-ben">切换python版本</span><a href="#qie-huan-python-ban-ben" class="header-anchor">#</a></h2><p>1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中</p>
-<ul>
-<li>update-alternatives —install /usr/bin/python python /usr/bin/python2.7 1</li>
-<li>update-alternatives —install /usr/bin/python python /usr/bin/python3.5 2</li>
-</ul>
-<p>2.选择版本</p>
-<ul>
-<li>update-alternatives —config python</li>
-</ul>
-<p>3.删除(一旦我们的系统中不再存在某个 Python 的替代版本时)</p>
-<ul>
-<li>update-alternatives —remove python /usr/bin/python2.7</li>
-</ul>
-<h2><span id="var-lib-docker">/var/lib/docker</span><a href="#var-lib-docker" class="header-anchor">#</a></h2><ul>
-<li>docker rm container_id</li>
-<li>docker rmi image_id</li>
-</ul>
-<h2><span id="debian-9-network-problem">debian 9 network problem</span><a href="#debian-9-network-problem" class="header-anchor">#</a></h2><ul>
-<li>networkctl</li>
-<li>networkctl status</li>
-<li>systemctl status systemd-networkd systemd-resolved</li>
-<li>systemctl restart systemd-networkd systemd-resolved</li>
-</ul>
-<h2><span id="shell-array">shell array</span><a href="#shell-array" class="header-anchor">#</a></h2><p>ids=(1 12 43 54)</p>
-<h2><span id="about-cpu">about cpu</span><a href="#about-cpu" class="header-anchor">#</a></h2><ul>
-<li>cat /proc/cpuinfo</li>
-<li>lscpu</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/12/26/about-linux/" data-id="cjg3j9r6l0005rai5pazuvris" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/12/28/rust-learning/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          rust-learning
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/10/25/MySQL/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">MySQL - show status</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
         
