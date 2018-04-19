@@ -36,7 +36,7 @@
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">21世纪</a>
+          <a href="/" id="subtitle">A Web Developer&#39;s Blog - fu</a>
         </h2>
       
     </div>
@@ -63,6 +63,323 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-angularjs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/19/angularjs/" class="article-date">
+  <time datetime="2018-04-19T02:41:25.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/angularjs/">AngularJS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1><span id="angularjs-is-a-javascript-framework">AngularJS is a JavaScript Framework</span><a href="#angularjs-is-a-javascript-framework" class="header-anchor">#</a></h1><h2><span id="angularjs-extends-html">AngularJS Extends HTML</span><a href="#angularjs-extends-html" class="header-anchor">#</a></h2><ul>
+<li>The ng-app directive defines an AngularJS application.</li>
+<li>The ng-model directive binds the value of HTML controls (input, select, textarea) to application data.<value></value></li>
+<li>The ng-bind directive binds application data to the HTML view.<innerhtml></innerhtml></li>
+</ul>
+<h1><span id="angularjs-directives">+AngularJS Directives+</span><a href="#angularjs-directives" class="header-anchor">#</a></h1><h2><span id="zhi-ling-ng-init-repeat-app-model">指令 ng-init/repeat/app/model/…</span><a href="#zhi-ling-ng-init-repeat-app-model" class="header-anchor">#</a></h2><ul>
+<li>The ng-init directive initializes AngularJS application variables.</li>
+<li>Alternatively with valid HTML:data-ng-init</li>
+<li>Normally, you will not use ng-init. You will use a controller or module instead.</li>
+</ul>
+<h2><span id="the-ng-repeat-directive-repeats-an-html-element">The ng-repeat directive repeats an HTML element.</span><a href="#the-ng-repeat-directive-repeats-an-html-element" class="header-anchor">#</a></h2><ul>
+<li>The ng-repeat directive actually clones HTML elements once for each item in a collection.</li>
+<li>&lt; Using ng-if=”$even” and $odd and $index in repeat &gt;</li>
+</ul>
+<h2><span id="the-ng-app-directive-defines-the-root-element-of-an-angularjs-application">The ng-app directive defines the root element of an AngularJS application.</span><a href="#the-ng-app-directive-defines-the-root-element-of-an-angularjs-application" class="header-anchor">#</a></h2><ul>
+<li>The ng-app directive will auto-bootstrap (automatically initialize) the application when a web page is loaded.</li>
+</ul>
+<h2><span id="the-ng-model-directive-can-also">The ng-model directive can also:</span><a href="#the-ng-model-directive-can-also" class="header-anchor">#</a></h2><ul>
+<li>Provide type validation for application data (number, email, required).<myform.myaddress.$error.email></myform.myaddress.$error.email></li>
+<li>Provide status for application data (invalid, dirty, touched, error).<myform.myaddress.$[valid|dirty|touched]></myform.myaddress.$[valid|dirty|touched]></li>
+<li>Provide CSS classes for HTML elements.<input.ng-invalid at="" <style="">…&lt;/style&gt;&gt;</input.ng-invalid></li>
+<li>Bind HTML elements to HTML forms.</li>
+</ul>
+<h2><span id="the-ng-model-directive-adds-removes-the-following-classes-according-to-the-status-of-the-form-field">The ng-model directive adds/removes the following classes, according to the status of the form field:</span><a href="#the-ng-model-directive-adds-removes-the-following-classes-according-to-the-status-of-the-form-field" class="header-anchor">#</a></h2><p>1.ng-empty<br>2.ng-not-empty<br>3.ng-touched<br>4.ng-untouched<br>5.ng-valid<br>6.ng-invalid<br>7.ng-dirty<br>8.ng-pending<br>9.ng-pristine</p>
+<h2><span id="two-way-binding">Two-way Binding</span><a href="#two-way-binding" class="header-anchor">#</a></h2><ul>
+<li>Thanks to the data binding in AngularJS, the view will reflect any changes made in the controller.</li>
+</ul>
+<h2><span id="the-ng-disabled-directive-binds-angularjs-application-data-to-the-disabled-attribute-of-html-elements">The ng-disabled directive binds AngularJS application data to the disabled attribute of HTML elements.</span><a href="#the-ng-disabled-directive-binds-angularjs-application-data-to-the-disabled-attribute-of-html-elements" class="header-anchor">#</a></h2><ul>
+<li>The ng-show directive shows or hides an HTML element.</li>
+<li><p>The ng-hide directive hides or shows an HTML element.</p>
+</li>
+<li><p>You can use any expression that evaluates to true or false.</p>
+</li>
+</ul>
+<ul>
+<li><strong>Note</strong>:If the property in the ng-model attribute does not exist, AngularJS will create one for you.</li>
+</ul>
+<h2><span id="new-directives-are-created-by-using-the-directive-function">New directives are created by using the .directive function.<app.directive("newdirective", function(){})=""></app.directive("newdirective",></span><a href="#new-directives-are-created-by-using-the-directive-function" class="header-anchor">#</a></h2><h2><span id="you-can-invoke-a-directive-by-using">You can invoke a directive by using:</span><a href="#you-can-invoke-a-directive-by-using" class="header-anchor">#</a></h2><ul>
+<li>Element name — <w3-test-directive>&lt;/w3-test-directive&gt;</w3-test-directive></li>
+<li>Attribute — <div w3-test-directive=""></div></li>
+<li>Class — <div class="w3-test-directive"></div></li>
+<li>Comment — <!-- directive: w3-test-directive --></li>
+</ul>
+<h2><span id="you-can-restrict-limit-your-directives-to-only-be-invoked-by-some-of-the-methods">You can restrict[limit] your directives to only be invoked by some of the methods.</span><a href="#you-can-restrict-limit-your-directives-to-only-be-invoked-by-some-of-the-methods" class="header-anchor">#</a></h2><h2><span id="the-legal-restrict-values-are">The legal restrict values are:</span><a href="#the-legal-restrict-values-are" class="header-anchor">#</a></h2><ul>
+<li>E for Element name</li>
+<li>A for Attribute</li>
+<li>C for Class</li>
+<li>M for Comment</li>
+<li>By default the value is EA, meaning that both Element names and attribute names can invoke the directive.</li>
+</ul>
+<h2><span id="note-you-can-use-data-ng-instead-of-ng-if-you-want-to-make-your-page-html-valid">Note:You can use data-ng-, instead of ng-, if you want to make your page HTML valid.</span><a href="#note-you-can-use-data-ng-instead-of-ng-if-you-want-to-make-your-page-html-valid" class="header-anchor">#</a></h2><h1><span id="angularjs-expressions">+AngularJS Expressions+</span><a href="#angularjs-expressions" class="header-anchor">#</a></h1><h2><span id="angularjs-expressions-are-written-inside-double-braces">AngularJS expressions are written inside double braces: .</span><a href="#angularjs-expressions-are-written-inside-double-braces" class="header-anchor">#</a></h2><h2><span id="angularjs-expressions-bind-angularjs-data-to-html-the-same-way-as-the-ng-bind-directive">AngularJS expressions bind AngularJS data to HTML the same way as the ng-bind directive.</span><a href="#angularjs-expressions-bind-angularjs-data-to-html-the-same-way-as-the-ng-bind-directive" class="header-anchor">#</a></h2><h2><span id="note-angularjs-expressions-are-much-like-javascript-expressions-they-can-contain-literals-operators-and-variables">Note:AngularJS expressions are much like JavaScript expressions: They can contain literals, operators, and variables.</span><a href="#note-angularjs-expressions-are-much-like-javascript-expressions-they-can-contain-literals-operators-and-variables" class="header-anchor">#</a></h2><p>Example 10 or undefined undefined</p>
+<h2><span id="note-if-you-remove-the-ng-app-directive-html-will-display-the-expression-as-it-is-without-solving-it">Note:If you remove the ng-app directive, HTML will display the expression as it is, without solving it.</span><a href="#note-if-you-remove-the-ng-app-directive-html-will-display-the-expression-as-it-is-without-solving-it" class="header-anchor">#</a></h2><ul>
+<li>AngularJS Numbers</li>
+<li><p>AngularJS numbers are like JavaScript numbers</p>
+</li>
+<li><p>AngularJS Strings</p>
+</li>
+<li><p>AngularJS strings are like JavaScript strings</p>
+</li>
+<li><p>AngularJS Objects</p>
+</li>
+<li><p>AngularJS objects are like JavaScript objects</p>
+</li>
+<li><p>AngularJS Arrays</p>
+</li>
+<li>AngularJS arrays are like JavaScript arrays</li>
+</ul>
+<h2><span id="angularjs-expressions-vs-javascript-expressions">AngularJS Expressions vs. JavaScript Expressions</span><a href="#angularjs-expressions-vs-javascript-expressions" class="header-anchor">#</a></h2><ul>
+<li>Like JavaScript expressions, AngularJS expressions can contain literals, operators, and variables.</li>
+<li>Unlike JavaScript expressions, AngularJS expressions can be written inside HTML.</li>
+<li>AngularJS expressions do not support conditionals, loops, and exceptions, while JavaScript expressions do.</li>
+<li>AngularJS expressions support filters, while JavaScript expressions do not.</li>
+</ul>
+<h1><span id="angularjs-applications">+AngularJS Applications+</span><a href="#angularjs-applications" class="header-anchor">#</a></h1><h2><span id="angularjs-modules-define-angularjs-applications">AngularJS modules define AngularJS applications.</span><a href="#angularjs-modules-define-angularjs-applications" class="header-anchor">#</a></h2><h2><span id="angularjs-controllers-control-angularjs-applications">AngularJS controllers control AngularJS applications.</span><a href="#angularjs-controllers-control-angularjs-applications" class="header-anchor">#</a></h2><ul>
+<li>The ng-app directive defines the application, the ng-controller directive defines the controller.</li>
+</ul>
+<h1><span id="angularjs-modules">+AngularJS Modules+</span><a href="#angularjs-modules" class="header-anchor">#</a></h1><ul>
+<li>The module is a container for the different parts of an application.</li>
+<li>The module is a container for the application controllers.</li>
+<li>Controllers always belong to a module.</li>
+<li>A module is created by using the AngularJS function angular.module<pre><code class="lang-javascript">var app = angular.module(&#39;myApp&#39;, []);
+</code></pre>
+</li>
+</ul>
+<h1><span id="angularjs-controllers">+AngularJS Controllers+</span><a href="#angularjs-controllers" class="header-anchor">#</a></h1><h2><span id="a-controller-is-a-javascript-object-created-by-a-standard-javascript-object-constructor">A controller is a JavaScript Object, created by a standard JavaScript object constructor.</span><a href="#a-controller-is-a-javascript-object-created-by-a-standard-javascript-object-constructor" class="header-anchor">#</a></h2><h1><span id="angularjs-scope">+AngularJS Scope+</span><a href="#angularjs-scope" class="header-anchor">#</a></h1><ul>
+<li>The scope is the binding part between the HTML (view) and the JavaScript (controller).</li>
+<li>The scope is an object with the available properties and methods.</li>
+<li><p>The scope is available for both the view and the controller.</p>
+</li>
+<li><p>When adding properties to the $scope object in the controller, the view (HTML) gets access to these properties.</p>
+</li>
+<li>In the view, you do not use the prefix $scope, you just refer to a propertyname, like .</li>
+</ul>
+<h1><span id="summary">Summary:</span><a href="#summary" class="header-anchor">#</a></h1><h2><span id="if-we-consider-an-angularjs-application-to-consist-of">If we consider an AngularJS application to consist of:</span><a href="#if-we-consider-an-angularjs-application-to-consist-of" class="header-anchor">#</a></h2><ul>
+<li>View, which is the HTML.</li>
+<li>Model, which is the data available for the current view.</li>
+<li>Controller, which is the JavaScript function that makes/changes/removes/controls the data.<h2><span id="then-the-scope-is-the-model">Then the scope is the Model.</span><a href="#then-the-scope-is-the-model" class="header-anchor">#</a></h2></li>
+<li>The scope is a JavaScript object with properties and methods, which are available for both the view and the controller.</li>
+</ul>
+<h2><span id="when-you-make-a-controller-in-angularjs-you-pass-the-scope-object-as-an-argument">When you make a controller in AngularJS, you pass the $scope object as an argument:</span><a href="#when-you-make-a-controller-in-angularjs-you-pass-the-scope-object-as-an-argument" class="header-anchor">#</a></h2><ul>
+<li>AngularJS controllers control applications:<pre><code>app.controller(&#39;myCtrl&#39;, function($scope) {
+  $scope.firstName= &quot;John&quot;;
+  $scope.lastName= &quot;Doe&quot;;
+});
+</code></pre><h2><span id="root-scope">Root Scope</span><a href="#root-scope" class="header-anchor">#</a></h2></li>
+<li>All applications have a $rootScope which is the scope created on the HTML element that contains the ng-app directive.</li>
+<li>The rootScope is available in the entire application.</li>
+<li>If a variable has the same name in both the current scope and in the rootScope, the application use the one in the current scope.</li>
+</ul>
+<h1><span id="angularjs-filters">+AngularJS Filters+</span><a href="#angularjs-filters" class="header-anchor">#</a></h1><ul>
+<li>Filters can be added in AngularJS to format data.</li>
+<li>AngularJS provides filters to transform data:</li>
+<li>currency Format a number to a currency format.</li>
+<li>date Format a date to a specified format.</li>
+<li>filter Select a subset of items from an array.</li>
+<li>json Format an object to a JSON string.</li>
+<li>limitTo Limits an array/string, into a specified number of elements/characters.</li>
+<li>lowercase Format a string to lower case.</li>
+<li>number Format a number to a string.</li>
+<li>orderBy Orders an array by an expression.</li>
+<li>uppercase Format a string to upper case.</li>
+</ul>
+<h2><span id="adding-filters-to-expressions">Adding Filters to Expressions</span><a href="#adding-filters-to-expressions" class="header-anchor">#</a></h2><ul>
+<li>Filters can be added to expressions by using the pipe character |, followed by a filter.</li>
+<li>The uppercase filter format strings to upper case:</li>
+</ul>
+<pre><code class="lang-angular">{{ lastName | uppercase }}
+</code></pre>
+<h2><span id="adding-filters-to-directives">Adding Filters to Directives</span><a href="#adding-filters-to-directives" class="header-anchor">#</a></h2><ul>
+<li>Filters are added to directives, like ng-repeat, by using the pipe character |, followed by a filter: ng-repeat=”x in names | orderBy:’country’”</li>
+</ul>
+<h2><span id="the-filter-filter-selects-a-subset-of-an-array">The filter filter selects a subset of an array.</span><a href="#the-filter-filter-selects-a-subset-of-an-array" class="header-anchor">#</a></h2><ul>
+<li>The filter filter can only be used on arrays, and it returns an array containing only the matching items.<ng-repeat="x in="" names="" |="" filter="" :="" 'i'"=""></ng-repeat="x></li>
+<li>By setting the ng-model directive on an input field, we can use the value of the input field as an expression in a filter.</li>
+</ul>
+<h2><span id="you-can-make-your-own-filters-by-register-a-new-filter-factory-function-with-your-module">You can make your own filters by register a new filter factory function with your module: <app.filter('myformat', function()="" {}=""></app.filter('myformat',></span><a href="#you-can-make-your-own-filters-by-register-a-new-filter-factory-function-with-your-module" class="header-anchor">#</a></h2><h1><span id="angularjs-services">+AngularJS Services+</span><a href="#angularjs-services" class="header-anchor">#</a></h1><ul>
+<li>In AngularJS you can make your own service, or use one of the many built-in services.</li>
+<li>In AngularJS, a service is a function, or object, that is available for, and limited to, your AngularJS application.</li>
+<li>AngularJS has about 30 built-in services. One of them is the $location service.</li>
+<li><p>The $location service has methods which return information about the location of the current web page.</p>
+</li>
+<li><p><strong>Note that the $location service is passed in to the controller as an argument. In order to use the service in the controller, it must be defined as a dependency.</strong></p>
+</li>
+</ul>
+<h2><span id="for-many-services-like-the-location-service">For many services, like the $location service,</span><a href="#for-many-services-like-the-location-service" class="header-anchor">#</a></h2><ul>
+<li>it seems like you could use objects that are already in the DOM,<br>like the window.location object, and you could,<br>but it would have some limitations, at least for your AngularJS application.</li>
+</ul>
+<h2><span id="the-http-service-is-one-of-the-most-common-used-services-in-angularjs-applications">The $http service is one of the most common used services in AngularJS applications.</span><a href="#the-http-service-is-one-of-the-most-common-used-services-in-angularjs-applications" class="header-anchor">#</a></h2><ul>
+<li>The service makes a request to the server, and lets your application handle the response.<br>$http is an AngularJS service for reading data from remote servers.</li>
+<li>There are several shortcut methods:<br>.delete()<br>.get()<br>.head()<br>.jsonp()<br>.patch()<br>.post()<br>.put()</li>
+</ul>
+<h2><span id="the-response-from-the-server-is-an-object-with-these-properties">The response from the server is an object with these properties:</span><a href="#the-response-from-the-server-is-an-object-with-these-properties" class="header-anchor">#</a></h2><ul>
+<li>.config the object used to generate the request.</li>
+<li>.data a string, or an object, carrying the response from the server.</li>
+<li>.headers a function to use to get header information.</li>
+<li>.status a number defining the HTTP status.</li>
+<li>.statusText a string defining the HTTP status.</li>
+</ul>
+<h2><span id="to-handle-errors-add-one-more-functions-to-the-then-method-lt-http-method-get-url-xxx-then-function-mysucces-response-function-myerror-response-gt">To handle errors, add one more functions to the .then method: &lt;$http({method : “GET”,url : “xxx”}).then(function mySucces(response) {}, function myError(response) {});&gt;</span><a href="#to-handle-errors-add-one-more-functions-to-the-then-method-lt-http-method-get-url-xxx-then-function-mysucces-response-function-myerror-response-gt" class="header-anchor">#</a></h2><ul>
+<li>The $timeout service is AngularJS’ version of the window.setTimeout function.</li>
+<li>The $interval service is AngularJS’ version of the window.setInterval function.</li>
+<li>To create your own service, connect your service to the module: <app.service('hexafy', function()="" {}=""></app.service('hexafy',></li>
+</ul>
+<h2><span id="once-you-have-created-a-service-and-connected-it-to-your-application-you-can-use-the-service-in-any-controller-directive-filter-or-even-inside-other-services">Once you have created a service, and connected it to your application, you can use the service in any controller, directive, filter, or even inside other services.</span><a href="#once-you-have-created-a-service-and-connected-it-to-your-application-you-can-use-the-service-in-any-controller-directive-filter-or-even-inside-other-services" class="header-anchor">#</a></h2><ul>
+<li>To use the service inside a filter, add it as a dependency when defining the filter: <app.filter('myformat',['hexafy', function(hexafy)="" {}=""></app.filter('myformat',['hexafy',></li>
+</ul>
+<h1><span id="angularjs-select-boxes">+AngularJS Select Boxes+</span><a href="#angularjs-select-boxes" class="header-anchor">#</a></h1><ul>
+<li>AngularJS lets you create dropdown lists based on items in an array, or an object.</li>
+<li>Creating a Select Box Using ng-options &lt; <select ng-model="selectedName" ng-options="x for x in names"> &gt;</select></li>
+<li>You can also use the ng-repeat directive to make the same dropdown list. &lt; <option ng-repeat="x in names"></option> &gt;</li>
+</ul>
+<h1><span id="angularjs-events">+AngularJS Events+</span><a href="#angularjs-events" class="header-anchor">#</a></h1><h2><span id="angularjs-has-its-own-html-events-directives">AngularJS has its own HTML events directives.</span><a href="#angularjs-has-its-own-html-events-directives" class="header-anchor">#</a></h2><p>-You can add AngularJS event listeners to your HTML elements by using one or more of these directives:</p>
+<pre><code>ng-blur
+ng-change
+ng-click
+ng-copy
+ng-cut
+ng-dblclick
+ng-focus
+ng-keydown
+ng-keypress
+ng-keyup
+ng-mousedown
+ng-mouseenter
+ng-mouseleave
+ng-mousemove
+ng-mouseover
+ng-mouseup
+ng-paste
+</code></pre><ul>
+<li><p>An AngularJS event will not overwrite an HTML event, both events will be executed.</p>
+</li>
+<li><p>The ng-click directive defines AngularJS code that will be executed when the element is being clicked.</p>
+</li>
+<li><p>You can pass the $event object as an argument when calling the function.</p>
+</li>
+<li>The $event object contains the browser’s event object.</li>
+</ul>
+<h1><span id="angularjs-forms">+AngularJS Forms+</span><a href="#angularjs-forms" class="header-anchor">#</a></h1><ul>
+<li><p>Forms in AngularJS provides data-binding and validation of input controls.</p>
+</li>
+<li><p>AngularJS monitors the state of the form and input fields (input, textarea, select), and lets you notify the user about the current state.</p>
+</li>
+<li>AngularJS also holds information about whether they have been touched, or modified, or not.</li>
+<li>You can use standard HTML5 attributes to validate input, or you can make your own validation functions.</li>
+</ul>
+<h2><span id="form-state-and-input-state">+Form State and Input State</span><a href="#form-state-and-input-state" class="header-anchor">#</a></h2><ul>
+<li>AngularJS is constantly updating the state of both the form and the input fields.</li>
+</ul>
+<h3><span id="input-fields-have-the-following-states">Input fields have the following states:</span><a href="#input-fields-have-the-following-states" class="header-anchor">#</a></h3><ul>
+<li>$untouched The field has not been touched yet</li>
+<li>$touched The field has been touched</li>
+<li>$pristine The field has not been modified yet</li>
+<li>$dirty The field has been modified</li>
+<li>$invalid The field content is not valid</li>
+<li>$valid The field content is valid</li>
+<li>They are all properties of the input field, and are either true or false.</li>
+</ul>
+<h3><span id="forms-have-the-following-states">Forms have the following states:</span><a href="#forms-have-the-following-states" class="header-anchor">#</a></h3><ul>
+<li>$pristine No fields have been modified yet</li>
+<li>$dirty One or more have been modified</li>
+<li>$invalid The form content is not valid</li>
+<li>$valid The form content is valid</li>
+<li>$submitted The form is submitted</li>
+<li>They are all properties of the form, and are either true or false.</li>
+</ul>
+<h2><span id="css-classes">+CSS Classes</span><a href="#css-classes" class="header-anchor">#</a></h2><ul>
+<li>AngularJS adds CSS classes to forms and input fields depending on their states.</li>
+</ul>
+<h3><span id="the-following-classes-are-added-to-or-removed-from-input-fields">The following classes are added to, or removed from, input fields:</span><a href="#the-following-classes-are-added-to-or-removed-from-input-fields" class="header-anchor">#</a></h3><ul>
+<li>ng-untouched The field has not been touched yet</li>
+<li>ng-touched The field has been touched</li>
+<li>ng-pristine The field has not been  modified yet</li>
+<li>ng-dirty The field has been modified</li>
+<li>ng-valid The field content is valid</li>
+<li>ng-invalid The field content is not valid</li>
+<li>ng-valid-key One key for each validation. Example: ng-valid-required, useful when there are more than one thing that must be validated</li>
+<li><p>ng-invalid-key Example: ng-invalid-required</p>
+<h3><span id="the-following-classes-are-added-to-or-removed-from-forms">The following classes are added to, or removed from, forms:</span><a href="#the-following-classes-are-added-to-or-removed-from-forms" class="header-anchor">#</a></h3></li>
+<li><p>ng-pristine No fields has not been modified yet</p>
+</li>
+<li>ng-dirty One or more fields has been modified</li>
+<li>ng-valid The form content is valid</li>
+<li>ng-invalid The form content is not valid</li>
+<li>ng-valid-key One key for each validation. Example: ng-valid-required, useful when there are more than one thing that must be validated</li>
+<li>ng-invalid-key Example: ng-invalid-required</li>
+<li>The classes are removed if the value they represent is false.</li>
+</ul>
+<h2><span id="custom-validation">+Custom Validation</span><a href="#custom-validation" class="header-anchor">#</a></h2><ul>
+<li>To create your own validation function is a bit more tricky.</li>
+<li><p>You have to add a new directive to your application, and deal with the validation inside a function with certain specified arguments.</p>
+</li>
+<li><p>At last, mCtrl.$parsers.push(myValidation); will add the myValidation function to an array of other functions, which will be executed every time the input value changes.</p>
+</li>
+</ul>
+<h1><span id="angularjs-api">+AngularJS API+</span><a href="#angularjs-api" class="header-anchor">#</a></h1><ul>
+<li>angular.lowercase()</li>
+<li>angular.uppercase()</li>
+<li>angular.isString()</li>
+<li>angular.isNumber()</li>
+</ul>
+<h2><span id="angularjs-includes">AngularJS Includes</span><a href="#angularjs-includes" class="header-anchor">#</a></h2><ul>
+<li><p>With AngularJS, you can include HTML content using the ng-include directive: <div ng-include="'myFile.htm'"></div></p>
+</li>
+<li><p>By default, the ng-include directive does not allow you to include files from other domains.</p>
+</li>
+<li><p>To include files from another domain, you can add a whitelist of legal files and/or domains in the config function of your application:</p>
+<pre><code class="lang-javascript">app.config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+      &#39;http://www.refsnesdata.no/**&#39;
+  ]);
+});
+</code></pre>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://friendlyxu.github.io/2018/04/19/angularjs/" data-id="cjg5x97oq00020vi5o52d411j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-mongo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -107,7 +424,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2018/04/17/mongo/" data-id="cjg3j9r6s000brai53ep16exu" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2018/04/17/mongo/" data-id="cjg5x97p9000i0vi5ef0utv6e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li></ul>
@@ -192,10 +509,56 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2018/04/17/js/" data-id="cjg3j9r6q000arai5orjftdyn" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2018/04/17/js/" data-id="cjg5x97p100070vi5dta5ol2n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-http" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/17/http/" class="article-date">
+  <time datetime="2018-04-17T01:35:50.000Z" itemprop="datePublished">2018-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/17/http/">Http</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Hypertext Transfer Protocol (HTTP) is an application-layer protocol for transmitting hypermedia documents, such as HTML. It was designed for communication between web browsers and web servers, but it can also be used for other purposes. HTTP follows a classical client-server model, with a client opening a connection to make a request, then waiting until it receives a response. HTTP is a stateless protocol, meaning that the server does not keep any data (state) between two requests. Though often based on a TCP/IP layer, it can be used on any reliable transport layer; that is, a protocol that doesn’t lose messages silently, such as UDP.</p>
+</blockquote>
+<p>HTTP 是一个应用层协议的媒体传输文件，例如HTML。<br>设计于web浏览器和web服务端之间的通讯，也能用于其它目的。<br>HTTP遵循经典的客户端服务端模型</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://friendlyxu.github.io/2018/04/17/http/" data-id="cjg5x97p8000f0vi5jnxhcudl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
     </footer>
   </div>
@@ -298,7 +661,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2018/04/12/Web/" data-id="cjg3j9r6d0001rai55fo134el" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2018/04/12/Web/" data-id="cjg5x97on00010vi5ui3cg7f5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
@@ -337,7 +700,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/12/28/rust-learning/" data-id="cjg3j9r6u000erai5pe4mtxqi" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/12/28/rust-learning/" data-id="cjg5x97pb000l0vi5ah7upxdw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -401,11 +764,60 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/12/26/about-linux/" data-id="cjg3j9r6l0005rai5pazuvris" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/12/26/about-linux/" data-id="cjg5x97ox00050vi5c6n06p6j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/hello-world/" class="article-date">
+  <time datetime="2017-10-25T09:48:48.758Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2><span id="quick-start">Quick Start</span><a href="#quick-start" class="header-anchor">#</a></h2><h3><span id="create-a-new-post">Create a new post</span><a href="#create-a-new-post" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3><span id="run-server">Run server</span><a href="#run-server" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo server
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3><span id="generate-static-files">Generate static files</span><a href="#generate-static-files" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo generate
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span><a href="#deploy-to-remote-sites" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo deploy
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://friendlyxu.github.io/2017/10/25/hello-world/" data-id="cjg5x97p6000c0vi5zohql1l4" class="article-share-link">Share</a>
+      
+      
     </footer>
   </div>
   
@@ -1108,56 +1520,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/25/MySQL/" data-id="cjg3j9r680000rai5829jwlmz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/hello-world/" class="article-date">
-  <time datetime="2017-10-25T09:48:48.758Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span><a href="#quick-start" class="header-anchor">#</a></h2><h3><span id="create-a-new-post">Create a new post</span><a href="#create-a-new-post" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3><span id="run-server">Run server</span><a href="#run-server" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span><a href="#generate-static-files" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span><a href="#deploy-to-remote-sites" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/25/hello-world/" data-id="cjg3j9r6p0007rai5z3ofpkbd" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/25/MySQL/" data-id="cjg5x97of00000vi5t52tp8qt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1194,7 +1557,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-cookie/" data-id="cjg3j9r6g0002rai531ut52wf" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/24/about-cookie/" data-id="cjg5x97oz00060vi5uudnzi7w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li></ul>
@@ -1206,163 +1569,11 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
 
 
   
-    <article id="post-about-ml" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/24/about-ml/" class="article-date">
-  <time datetime="2017-10-24T06:04:24.000Z" itemprop="datePublished">2017-10-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/24/about-ml/">about-ml</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2><span id="algorithms">Algorithms</span><a href="#algorithms" class="header-anchor">#</a></h2><h3><span id="supervised-learning">Supervised Learning</span><a href="#supervised-learning" class="header-anchor">#</a></h3><ul>
-<li>Regression<ul>
-<li>Generalized Linear Regression</li>
-<li>Gaussian Processes</li>
-<li>Isotonic Regression</li>
-</ul>
-</li>
-<li>Classification<ul>
-<li>Support Vector Machines (SVM)</li>
-<li>Linear and Quadratic Discriminant Analysis</li>
-<li>Decision Trees</li>
-<li>K Nearest Neighbors</li>
-<li>Naive Bayes</li>
-<li>Neural Networks</li>
-<li>Ensemble Methods</li>
-<li>Kernel Approximation</li>
-<li>Adaboost</li>
-</ul>
-</li>
-</ul>
-<h3><span id="unsupervised-learning">Unsupervised Learning</span><a href="#unsupervised-learning" class="header-anchor">#</a></h3><ul>
-<li>Clustering<ul>
-<li>K-Means</li>
-<li>Gaussian Mixture Models</li>
-<li>Spectral Clustering</li>
-<li>Manifold Learning</li>
-<li>Hierarchical Clustering</li>
-<li>Affinity Propagation</li>
-<li>DBSCAN</li>
-<li>Birch</li>
-</ul>
-</li>
-<li>Dimensionality Reduction<ul>
-<li>Principal Component Analysis</li>
-<li>Linear Discriminant Analysis</li>
-<li>Locally linear embedding</li>
-<li>Laplacian Eigenmaps</li>
-<li>Isomap</li>
-<li>Spectral Embedding</li>
-<li>Feature Agglomeration</li>
-</ul>
-</li>
-</ul>
-<h3><span id="reinforcement-learning">Reinforcement Learning</span><a href="#reinforcement-learning" class="header-anchor">#</a></h3><ul>
-<li>Markov Decision Processes</li>
-<li>Q-Learning</li>
-<li>Sarsa</li>
-<li>A-Learning</li>
-</ul>
-<h3><span id="deep-learning">Deep Learning</span><a href="#deep-learning" class="header-anchor">#</a></h3><ul>
-<li>Convolutional Neural Network (CNN)</li>
-<li>Restricted Boltzmann Machines</li>
-<li>Recurrent Neural Network (RNN)<ul>
-<li>Long Short Term Memory</li>
-</ul>
-</li>
-</ul>
-<h2><span id="model-selection-and-evaluation">Model Selection and Evaluation</span><a href="#model-selection-and-evaluation" class="header-anchor">#</a></h2><ul>
-<li>Cross-validation</li>
-<li>Grid Search</li>
-<li>Model Evaluation</li>
-<li>Model Persistence</li>
-<li>Validation Curves</li>
-</ul>
-<h2><span id="frameworks">Frameworks</span><a href="#frameworks" class="header-anchor">#</a></h2><ul>
-<li>TensorFlow</li>
-<li>Caffe2/Caffe</li>
-<li>Theano</li>
-<li>Torch</li>
-<li>Chainer</li>
-<li>OpenBLAS</li>
-<li>CUDA</li>
-<li>CUDNN</li>
-</ul>
-<h2><span id="roadmap">Roadmap</span><a href="#roadmap" class="header-anchor">#</a></h2><ul>
-<li>Foundation</li>
-</ul>
-<h2><span id="ai">AI</span><a href="#ai" class="header-anchor">#</a></h2><ul>
-<li>算法</li>
-<li>算力</li>
-<li>数据</li>
-</ul>
-<h2><span id="machine-learning-crash-course">Machine Learning Crash Course</span><a href="#machine-learning-crash-course" class="header-anchor">#</a></h2><h3><span id="training-and-loss">Training and Loss</span><a href="#training-and-loss" class="header-anchor">#</a></h3><ul>
-<li><p>Mean square error(MSE) <strong>均方误差</strong></p>
-<script type="math/tex; mode=display">MSE = \frac{1}{N} \sum_{(x,y)\in D} (y - prediction(x))^2</script></li>
-<li><p>Although MSE is commonly-used in machine learning, it is neither the only practical loss function nor the best loss function for all circumstances.</p>
-</li>
-</ul>
-<p><strong>Note that</strong> a gradient is a vector, so it has both of the following characteristics:</p>
-<ul>
-<li>a direction</li>
-<li>a magnitude</li>
-</ul>
-<h3><span id="tensorflow">TensorFlow</span><a href="#tensorflow" class="header-anchor">#</a></h3><p>The following table summarizes the purposes of the different layers:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Toolkit(s)</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Estimator(tf.estimator)</td>
-<td>High-level,OOP API</td>
-</tr>
-<tr>
-<td>tf.layers/tf.losses/tf.metrics</td>
-<td>Libraries for common model components</td>
-</tr>
-<tr>
-<td>TensorFlow</td>
-<td>Lower-level APIs</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-ml/" data-id="cjg3j9r6n0006rai5hc76tvzu" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
 
 
-  
-
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -1381,7 +1592,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/">ML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/">mongo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/">ML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/">mongo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
     </div>
   </div>
 
@@ -1391,7 +1602,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ML/" style="font-size: 10px;">ML</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/web/" style="font-size: 20px;">web</a>
+      <a href="/tags/ML/" style="font-size: 10px;">ML</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/web/" style="font-size: 20px;">web</a>
     </div>
   </div>
 
@@ -1413,6 +1624,10 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       <ul>
         
           <li>
+            <a href="/2018/04/19/angularjs/">AngularJS</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/17/mongo/">MongoDB</a>
           </li>
         
@@ -1421,15 +1636,11 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
           </li>
         
           <li>
+            <a href="/2018/04/17/http/">Http</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/12/Web/">Web</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/28/rust-learning/">rust-learning</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/26/about-linux/">about-linux</a>
           </li>
         
       </ul>
