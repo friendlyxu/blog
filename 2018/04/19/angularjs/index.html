@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="21st">
 <meta property="og:description" content="AngularJS is a JavaScript Framework#AngularJS Extends HTML# The ng-app directive defines an AngularJS application. The ng-model directive binds the value of HTML controls (input, select, textarea) to">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-19T02:47:09.113Z">
+<meta property="og:updated_time" content="2018-04-19T02:51:53.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AngularJS">
 <meta name="twitter:description" content="AngularJS is a JavaScript Framework#AngularJS Extends HTML# The ng-app directive defines an AngularJS application. The ng-model directive binds the value of HTML controls (input, select, textarea) to">
@@ -143,7 +143,11 @@
 <li>M for Comment</li>
 <li>By default the value is EA, meaning that both Element names and attribute names can invoke the directive.</li>
 </ul>
-<h2><span id="note-you-can-use-data-ng-instead-of-ng-if-you-want-to-make-your-page-html-valid">Note:You can use data-ng-, instead of ng-, if you want to make your page HTML valid.</span><a href="#note-you-can-use-data-ng-instead-of-ng-if-you-want-to-make-your-page-html-valid" class="header-anchor">#</a></h2><h1><span id="angularjs-expressions">+AngularJS Expressions+</span><a href="#angularjs-expressions" class="header-anchor">#</a></h1><h2><span id="angularjs-expressions-are-written-inside-double-braces">AngularJS expressions are written inside double braces: .</span><a href="#angularjs-expressions-are-written-inside-double-braces" class="header-anchor">#</a></h2><h2><span id="angularjs-expressions-bind-angularjs-data-to-html-the-same-way-as-the-ng-bind-directive">AngularJS expressions bind AngularJS data to HTML the same way as the ng-bind directive.</span><a href="#angularjs-expressions-bind-angularjs-data-to-html-the-same-way-as-the-ng-bind-directive" class="header-anchor">#</a></h2><h2><span id="note-angularjs-expressions-are-much-like-javascript-expressions-they-can-contain-literals-operators-and-variables">Note:AngularJS expressions are much like JavaScript expressions: They can contain literals, operators, and variables.</span><a href="#note-angularjs-expressions-are-much-like-javascript-expressions-they-can-contain-literals-operators-and-variables" class="header-anchor">#</a></h2><p>Example 10 or undefined undefined</p>
+<h2><span id="note-you-can-use-data-ng-instead-of-ng-if-you-want-to-make-your-page-html-valid">Note:You can use data-ng-, instead of ng-, if you want to make your page HTML valid.</span><a href="#note-you-can-use-data-ng-instead-of-ng-if-you-want-to-make-your-page-html-valid" class="header-anchor">#</a></h2><h1><span id="angularjs-expressions">+AngularJS Expressions+</span><a href="#angularjs-expressions" class="header-anchor">#</a></h1><h2><span id="angularjs-expressions-are-written-inside-double-braces">AngularJS expressions are written inside double braces:</span><a href="#angularjs-expressions-are-written-inside-double-braces" class="header-anchor">#</a></h2><pre><code class="lang-angular">{{ expression }}.
+</code></pre>
+<h2><span id="angularjs-expressions-bind-angularjs-data-to-html-the-same-way-as-the-ng-bind-directive">AngularJS expressions bind AngularJS data to HTML the same way as the ng-bind directive.</span><a href="#angularjs-expressions-bind-angularjs-data-to-html-the-same-way-as-the-ng-bind-directive" class="header-anchor">#</a></h2><h2><span id="note-angularjs-expressions-are-much-like-javascript-expressions-they-can-contain-literals-operators-and-variables">Note:AngularJS expressions are much like JavaScript expressions: They can contain literals, operators, and variables.</span><a href="#note-angularjs-expressions-are-much-like-javascript-expressions-they-can-contain-literals-operators-and-variables" class="header-anchor">#</a></h2><p>Example</p>
+<pre><code class="lang-angular">{{ 5 + 5 }} or {{ firstName + " " + lastName }}
+</code></pre>
 <h2><span id="note-if-you-remove-the-ng-app-directive-html-will-display-the-expression-as-it-is-without-solving-it">Note:If you remove the ng-app directive, HTML will display the expression as it is, without solving it.</span><a href="#note-if-you-remove-the-ng-app-directive-html-will-display-the-expression-as-it-is-without-solving-it" class="header-anchor">#</a></h2><ul>
 <li>AngularJS Numbers</li>
 <li><p>AngularJS numbers are like JavaScript numbers</p>
@@ -184,7 +188,9 @@
 </li>
 <li><p>When adding properties to the $scope object in the controller, the view (HTML) gets access to these properties.</p>
 </li>
-<li>In the view, you do not use the prefix $scope, you just refer to a propertyname, like .</li>
+<li>In the view, you do not use the prefix $scope, you just refer to a propertyname, like<pre><code class="lang-angular">{{carname}}
+</code></pre>
+</li>
 </ul>
 <h1><span id="summary">Summary:</span><a href="#summary" class="header-anchor">#</a></h1><h2><span id="if-we-consider-an-angularjs-application-to-consist-of">If we consider an AngularJS application to consist of:</span><a href="#if-we-consider-an-angularjs-application-to-consist-of" class="header-anchor">#</a></h2><ul>
 <li>View, which is the HTML.</li>
@@ -251,20 +257,30 @@
 <li>.status a number defining the HTTP status.</li>
 <li>.statusText a string defining the HTTP status.</li>
 </ul>
-<h2><span id="to-handle-errors-add-one-more-functions-to-the-then-method-lt-http-method-get-url-xxx-then-function-mysucces-response-function-myerror-response-gt">To handle errors, add one more functions to the .then method: &lt;$http({method : “GET”,url : “xxx”}).then(function mySucces(response) {}, function myError(response) {});&gt;</span><a href="#to-handle-errors-add-one-more-functions-to-the-then-method-lt-http-method-get-url-xxx-then-function-mysucces-response-function-myerror-response-gt" class="header-anchor">#</a></h2><ul>
+<h2><span id="to-handle-errors-add-one-more-functions-to-the-then-method">To handle errors, add one more functions to the .then method:</span><a href="#to-handle-errors-add-one-more-functions-to-the-then-method" class="header-anchor">#</a></h2><pre><code class="lang-angular">&lt;$http({method : &quot;GET&quot;,url : &quot;xxx&quot;}).then(function mySucces(response) {}, function myError(response) {});&gt;
+</code></pre>
+<ul>
 <li>The $timeout service is AngularJS’ version of the window.setTimeout function.</li>
 <li>The $interval service is AngularJS’ version of the window.setInterval function.</li>
-<li>To create your own service, connect your service to the module: <app.service('hexafy', function()="" {}=""></app.service('hexafy',></li>
+<li>To create your own service, connect your service to the module:<pre><code class="lang-angular">&lt;app.service(&#39;hexafy&#39;, function() {}&gt;
+</code></pre>
+</li>
 </ul>
 <h2><span id="once-you-have-created-a-service-and-connected-it-to-your-application-you-can-use-the-service-in-any-controller-directive-filter-or-even-inside-other-services">Once you have created a service, and connected it to your application, you can use the service in any controller, directive, filter, or even inside other services.</span><a href="#once-you-have-created-a-service-and-connected-it-to-your-application-you-can-use-the-service-in-any-controller-directive-filter-or-even-inside-other-services" class="header-anchor">#</a></h2><ul>
-<li>To use the service inside a filter, add it as a dependency when defining the filter: <app.filter('myformat',['hexafy', function(hexafy)="" {}=""></app.filter('myformat',['hexafy',></li>
+<li>To use the service inside a filter, add it as a dependency when defining the filter:<pre><code class="lang-angular">&lt;app.filter(&#39;myFormat&#39;,[&#39;hexafy&#39;, function(hexafy) {}&gt;
+</code></pre>
+</li>
 </ul>
 <h1><span id="angularjs-select-boxes">+AngularJS Select Boxes+</span><a href="#angularjs-select-boxes" class="header-anchor">#</a></h1><ul>
 <li>AngularJS lets you create dropdown lists based on items in an array, or an object.</li>
-<li>Creating a Select Box Using ng-options &lt; <select ng-model="selectedName" ng-options="x for x in names"> &gt;</select></li>
-<li>You can also use the ng-repeat directive to make the same dropdown list. &lt; <option ng-repeat="x in names"></option> &gt;</li>
+<li>Creating a Select Box Using ng-options<pre><code class="lang-angular">&lt; &lt;select ng-model=&quot;selectedName&quot; ng-options=&quot;x for x in names&quot;&gt; &gt;
+</code></pre>
+</li>
+<li>You can also use the ng-repeat directive to make the same dropdown list.<pre><code class="lang-angular">&lt; &lt;option ng-repeat=&quot;x in names&quot;&gt;{{x}}&lt;/option&gt; &gt;
+</code></pre>
+<h1><span id="angularjs-events">+AngularJS Events+</span><a href="#angularjs-events" class="header-anchor">#</a></h1></li>
 </ul>
-<h1><span id="angularjs-events">+AngularJS Events+</span><a href="#angularjs-events" class="header-anchor">#</a></h1><h2><span id="angularjs-has-its-own-html-events-directives">AngularJS has its own HTML events directives.</span><a href="#angularjs-has-its-own-html-events-directives" class="header-anchor">#</a></h2><p>-You can add AngularJS event listeners to your HTML elements by using one or more of these directives:</p>
+<h2><span id="angularjs-has-its-own-html-events-directives">AngularJS has its own HTML events directives.</span><a href="#angularjs-has-its-own-html-events-directives" class="header-anchor">#</a></h2><p>-You can add AngularJS event listeners to your HTML elements by using one or more of these directives:</p>
 <pre><code>ng-blur
 ng-change
 ng-click
@@ -372,7 +388,7 @@ ng-paste
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2018/04/19/angularjs/" data-id="cjg5x97oq00020vi5o52d411j" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2018/04/19/angularjs/" data-id="cjg5xrur20006n6i58kq3zovz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li></ul>

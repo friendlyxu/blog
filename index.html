@@ -140,7 +140,11 @@
 <li>M for Comment</li>
 <li>By default the value is EA, meaning that both Element names and attribute names can invoke the directive.</li>
 </ul>
-<h2><span id="note-you-can-use-data-ng-instead-of-ng-if-you-want-to-make-your-page-html-valid">Note:You can use data-ng-, instead of ng-, if you want to make your page HTML valid.</span><a href="#note-you-can-use-data-ng-instead-of-ng-if-you-want-to-make-your-page-html-valid" class="header-anchor">#</a></h2><h1><span id="angularjs-expressions">+AngularJS Expressions+</span><a href="#angularjs-expressions" class="header-anchor">#</a></h1><h2><span id="angularjs-expressions-are-written-inside-double-braces">AngularJS expressions are written inside double braces: .</span><a href="#angularjs-expressions-are-written-inside-double-braces" class="header-anchor">#</a></h2><h2><span id="angularjs-expressions-bind-angularjs-data-to-html-the-same-way-as-the-ng-bind-directive">AngularJS expressions bind AngularJS data to HTML the same way as the ng-bind directive.</span><a href="#angularjs-expressions-bind-angularjs-data-to-html-the-same-way-as-the-ng-bind-directive" class="header-anchor">#</a></h2><h2><span id="note-angularjs-expressions-are-much-like-javascript-expressions-they-can-contain-literals-operators-and-variables">Note:AngularJS expressions are much like JavaScript expressions: They can contain literals, operators, and variables.</span><a href="#note-angularjs-expressions-are-much-like-javascript-expressions-they-can-contain-literals-operators-and-variables" class="header-anchor">#</a></h2><p>Example 10 or undefined undefined</p>
+<h2><span id="note-you-can-use-data-ng-instead-of-ng-if-you-want-to-make-your-page-html-valid">Note:You can use data-ng-, instead of ng-, if you want to make your page HTML valid.</span><a href="#note-you-can-use-data-ng-instead-of-ng-if-you-want-to-make-your-page-html-valid" class="header-anchor">#</a></h2><h1><span id="angularjs-expressions">+AngularJS Expressions+</span><a href="#angularjs-expressions" class="header-anchor">#</a></h1><h2><span id="angularjs-expressions-are-written-inside-double-braces">AngularJS expressions are written inside double braces:</span><a href="#angularjs-expressions-are-written-inside-double-braces" class="header-anchor">#</a></h2><pre><code class="lang-angular">{{ expression }}.
+</code></pre>
+<h2><span id="angularjs-expressions-bind-angularjs-data-to-html-the-same-way-as-the-ng-bind-directive">AngularJS expressions bind AngularJS data to HTML the same way as the ng-bind directive.</span><a href="#angularjs-expressions-bind-angularjs-data-to-html-the-same-way-as-the-ng-bind-directive" class="header-anchor">#</a></h2><h2><span id="note-angularjs-expressions-are-much-like-javascript-expressions-they-can-contain-literals-operators-and-variables">Note:AngularJS expressions are much like JavaScript expressions: They can contain literals, operators, and variables.</span><a href="#note-angularjs-expressions-are-much-like-javascript-expressions-they-can-contain-literals-operators-and-variables" class="header-anchor">#</a></h2><p>Example</p>
+<pre><code class="lang-angular">{{ 5 + 5 }} or {{ firstName + " " + lastName }}
+</code></pre>
 <h2><span id="note-if-you-remove-the-ng-app-directive-html-will-display-the-expression-as-it-is-without-solving-it">Note:If you remove the ng-app directive, HTML will display the expression as it is, without solving it.</span><a href="#note-if-you-remove-the-ng-app-directive-html-will-display-the-expression-as-it-is-without-solving-it" class="header-anchor">#</a></h2><ul>
 <li>AngularJS Numbers</li>
 <li><p>AngularJS numbers are like JavaScript numbers</p>
@@ -181,7 +185,9 @@
 </li>
 <li><p>When adding properties to the $scope object in the controller, the view (HTML) gets access to these properties.</p>
 </li>
-<li>In the view, you do not use the prefix $scope, you just refer to a propertyname, like .</li>
+<li>In the view, you do not use the prefix $scope, you just refer to a propertyname, like<pre><code class="lang-angular">{{carname}}
+</code></pre>
+</li>
 </ul>
 <h1><span id="summary">Summary:</span><a href="#summary" class="header-anchor">#</a></h1><h2><span id="if-we-consider-an-angularjs-application-to-consist-of">If we consider an AngularJS application to consist of:</span><a href="#if-we-consider-an-angularjs-application-to-consist-of" class="header-anchor">#</a></h2><ul>
 <li>View, which is the HTML.</li>
@@ -248,20 +254,30 @@
 <li>.status a number defining the HTTP status.</li>
 <li>.statusText a string defining the HTTP status.</li>
 </ul>
-<h2><span id="to-handle-errors-add-one-more-functions-to-the-then-method-lt-http-method-get-url-xxx-then-function-mysucces-response-function-myerror-response-gt">To handle errors, add one more functions to the .then method: &lt;$http({method : “GET”,url : “xxx”}).then(function mySucces(response) {}, function myError(response) {});&gt;</span><a href="#to-handle-errors-add-one-more-functions-to-the-then-method-lt-http-method-get-url-xxx-then-function-mysucces-response-function-myerror-response-gt" class="header-anchor">#</a></h2><ul>
+<h2><span id="to-handle-errors-add-one-more-functions-to-the-then-method">To handle errors, add one more functions to the .then method:</span><a href="#to-handle-errors-add-one-more-functions-to-the-then-method" class="header-anchor">#</a></h2><pre><code class="lang-angular">&lt;$http({method : &quot;GET&quot;,url : &quot;xxx&quot;}).then(function mySucces(response) {}, function myError(response) {});&gt;
+</code></pre>
+<ul>
 <li>The $timeout service is AngularJS’ version of the window.setTimeout function.</li>
 <li>The $interval service is AngularJS’ version of the window.setInterval function.</li>
-<li>To create your own service, connect your service to the module: <app.service('hexafy', function()="" {}=""></app.service('hexafy',></li>
+<li>To create your own service, connect your service to the module:<pre><code class="lang-angular">&lt;app.service(&#39;hexafy&#39;, function() {}&gt;
+</code></pre>
+</li>
 </ul>
 <h2><span id="once-you-have-created-a-service-and-connected-it-to-your-application-you-can-use-the-service-in-any-controller-directive-filter-or-even-inside-other-services">Once you have created a service, and connected it to your application, you can use the service in any controller, directive, filter, or even inside other services.</span><a href="#once-you-have-created-a-service-and-connected-it-to-your-application-you-can-use-the-service-in-any-controller-directive-filter-or-even-inside-other-services" class="header-anchor">#</a></h2><ul>
-<li>To use the service inside a filter, add it as a dependency when defining the filter: <app.filter('myformat',['hexafy', function(hexafy)="" {}=""></app.filter('myformat',['hexafy',></li>
+<li>To use the service inside a filter, add it as a dependency when defining the filter:<pre><code class="lang-angular">&lt;app.filter(&#39;myFormat&#39;,[&#39;hexafy&#39;, function(hexafy) {}&gt;
+</code></pre>
+</li>
 </ul>
 <h1><span id="angularjs-select-boxes">+AngularJS Select Boxes+</span><a href="#angularjs-select-boxes" class="header-anchor">#</a></h1><ul>
 <li>AngularJS lets you create dropdown lists based on items in an array, or an object.</li>
-<li>Creating a Select Box Using ng-options &lt; <select ng-model="selectedName" ng-options="x for x in names"> &gt;</select></li>
-<li>You can also use the ng-repeat directive to make the same dropdown list. &lt; <option ng-repeat="x in names"></option> &gt;</li>
+<li>Creating a Select Box Using ng-options<pre><code class="lang-angular">&lt; &lt;select ng-model=&quot;selectedName&quot; ng-options=&quot;x for x in names&quot;&gt; &gt;
+</code></pre>
+</li>
+<li>You can also use the ng-repeat directive to make the same dropdown list.<pre><code class="lang-angular">&lt; &lt;option ng-repeat=&quot;x in names&quot;&gt;{{x}}&lt;/option&gt; &gt;
+</code></pre>
+<h1><span id="angularjs-events">+AngularJS Events+</span><a href="#angularjs-events" class="header-anchor">#</a></h1></li>
 </ul>
-<h1><span id="angularjs-events">+AngularJS Events+</span><a href="#angularjs-events" class="header-anchor">#</a></h1><h2><span id="angularjs-has-its-own-html-events-directives">AngularJS has its own HTML events directives.</span><a href="#angularjs-has-its-own-html-events-directives" class="header-anchor">#</a></h2><p>-You can add AngularJS event listeners to your HTML elements by using one or more of these directives:</p>
+<h2><span id="angularjs-has-its-own-html-events-directives">AngularJS has its own HTML events directives.</span><a href="#angularjs-has-its-own-html-events-directives" class="header-anchor">#</a></h2><p>-You can add AngularJS event listeners to your HTML elements by using one or more of these directives:</p>
 <pre><code>ng-blur
 ng-change
 ng-click
@@ -369,7 +385,7 @@ ng-paste
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2018/04/19/angularjs/" data-id="cjg5x97oq00020vi5o52d411j" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2018/04/19/angularjs/" data-id="cjg5xrur20006n6i58kq3zovz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li></ul>
@@ -424,7 +440,7 @@ ng-paste
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2018/04/17/mongo/" data-id="cjg5x97p9000i0vi5ef0utv6e" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2018/04/17/mongo/" data-id="cjg5xrur8000gn6i51kkwc9ie" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongo/">mongo</a></li></ul>
@@ -509,7 +525,7 @@ ng-paste
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2018/04/17/js/" data-id="cjg5x97p100070vi5dta5ol2n" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2018/04/17/js/" data-id="cjg5xrur7000dn6i5v2p3kxfk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
@@ -550,12 +566,12 @@ ng-paste
         <blockquote>
 <p>Hypertext Transfer Protocol (HTTP) is an application-layer protocol for transmitting hypermedia documents, such as HTML. It was designed for communication between web browsers and web servers, but it can also be used for other purposes. HTTP follows a classical client-server model, with a client opening a connection to make a request, then waiting until it receives a response. HTTP is a stateless protocol, meaning that the server does not keep any data (state) between two requests. Though often based on a TCP/IP layer, it can be used on any reliable transport layer; that is, a protocol that doesn’t lose messages silently, such as UDP.</p>
 </blockquote>
-<p>HTTP 是一个应用层协议的媒体传输文件，例如HTML。<br>设计于web浏览器和web服务端之间的通讯，也能用于其它目的。<br>HTTP遵循经典的客户端服务端模型</p>
+<p>HTTP 是一个应用层协议，用于传输媒体文件，例如HTML。<br>设计于web浏览器和web服务端之间的通讯，也能用于其它目的。<br>HTTP遵循经典的客户端服务端模型</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2018/04/17/http/" data-id="cjg5x97p8000f0vi5jnxhcudl" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2018/04/17/http/" data-id="cjg5xrur6000an6i5vi5h2nkv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
@@ -661,7 +677,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2018/04/12/Web/" data-id="cjg5x97on00010vi5ui3cg7f5" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2018/04/12/Web/" data-id="cjg5xruqr0000n6i5a8a2ffi7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
@@ -700,7 +716,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/12/28/rust-learning/" data-id="cjg5x97pb000l0vi5ah7upxdw" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/12/28/rust-learning/" data-id="cjg5xrurn000yn6i5ikpre6u9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -764,60 +780,11 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/12/26/about-linux/" data-id="cjg5x97ox00050vi5c6n06p6j" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/12/26/about-linux/" data-id="cjg5xruqz0004n6i5fzeyim9h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/hello-world/" class="article-date">
-  <time datetime="2017-10-25T09:48:48.758Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span><a href="#quick-start" class="header-anchor">#</a></h2><h3><span id="create-a-new-post">Create a new post</span><a href="#create-a-new-post" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3><span id="run-server">Run server</span><a href="#run-server" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span><a href="#generate-static-files" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span><a href="#deploy-to-remote-sites" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/25/hello-world/" data-id="cjg5x97p6000c0vi5zohql1l4" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -1520,7 +1487,56 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/25/MySQL/" data-id="cjg5x97of00000vi5t52tp8qt" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/25/MySQL/" data-id="cjg5xrurp000zn6i5072dus8y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/hello-world/" class="article-date">
+  <time datetime="2017-10-25T09:48:48.758Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2><span id="quick-start">Quick Start</span><a href="#quick-start" class="header-anchor">#</a></h2><h3><span id="create-a-new-post">Create a new post</span><a href="#create-a-new-post" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3><span id="run-server">Run server</span><a href="#run-server" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo server
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3><span id="generate-static-files">Generate static files</span><a href="#generate-static-files" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo generate
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span><a href="#deploy-to-remote-sites" class="header-anchor">#</a></h3><pre><code class="lang-bash">$ hexo deploy
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://friendlyxu.github.io/2017/10/25/hello-world/" data-id="cjg5xrur40009n6i55oqst74c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1557,7 +1573,7 @@ st->op_agent->op_qy</textarea><textarea id="flowchart-0-options" style="display:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-cookie/" data-id="cjg5x97oz00060vi5uudnzi7w" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/24/about-cookie/" data-id="cjg5xruqw0001n6i57ptrguhu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li></ul>
