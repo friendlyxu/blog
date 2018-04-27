@@ -3,15 +3,20 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Category: web | 21st</title>
+  <title>ddd | 21st</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="21st">
-<meta property="og:url" content="http://friendlyxu.github.io/categories/web/index.html">
+  <meta name="description" content="DDD#Value Objects#1.A Value Object is not just a thing in your Domain — it measures, quantifies, or describes something.2.For example, a product price could be modeled using a Value Object.Ward Cunnin">
+<meta name="keywords" content="architecture">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ddd">
+<meta property="og:url" content="http://friendlyxu.github.io/2018/04/26/ddd/index.html">
 <meta property="og:site_name" content="21st">
+<meta property="og:description" content="DDD#Value Objects#1.A Value Object is not just a thing in your Domain — it measures, quantifies, or describes something.2.For example, a product price could be modeled using a Value Object.Ward Cunnin">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-27T10:20:37.092Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="21st">
+<meta name="twitter:title" content="ddd">
+<meta name="twitter:description" content="DDD#Value Objects#1.A Value Object is not just a thing in your Domain — it measures, quantifies, or describes something.2.For example, a product price could be modeled using a Value Object.Ward Cunnin">
   
     <link rel="alternate" href="/atom.xml" title="21st" type="application/atom+xml">
   
@@ -62,96 +67,102 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/19/angularjs/" class="archive-article-date">
-  <time datetime="2018-04-19T02:41:25.000Z" itemprop="datePublished">4月 19</time>
+        <section id="main"><article id="post-ddd" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/26/ddd/" class="article-date">
+  <time datetime="2018-04-26T11:47:19.000Z" itemprop="datePublished">2018-04-26</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/19/angularjs/">AngularJS</a>
+    <h1 class="article-title" itemprop="name">
+      ddd
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/17/js/" class="archive-article-date">
-  <time datetime="2018-04-17T10:11:55.000Z" itemprop="datePublished">4月 17</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/17/js/">Js</a>
-    </h1>
-  
+        <h1><span id="ddd">DDD</span><a href="#ddd" class="header-anchor">#</a></h1><h2><span id="value-objects">Value Objects</span><a href="#value-objects" class="header-anchor">#</a></h2><p>1.A Value Object is not just a thing in your Domain — it measures, quantifies, or describes something.<br>2.For example, a product price could be modeled using a Value Object.<br>Ward Cunningham defines a Value Object as:</p>
+<blockquote>
+<p>a measure or description of something. Examples of value objects are things like numbers, dates, monies and strings. Usually, they are small objects which are used quite widely. Their identity is based on their state rather than on their object identity. This way, you can have multiple copies of the same conceptual value object. Every $5 note has its own identity (thanks to its serial number), but the cash economy relies on every $5 note having the same value as every other $5 note.</p>
+</blockquote>
+<pre><code class="lang-translate">测量或者描述事物，例如，数字、时间、钱、字符串。通常，它们是小的对象，广泛应用。
+它们的特性是基于它们的**状态**，而不是它们的对象特性。
+这样，你能有多个相同概念的值对象副本。
+每5美元的钞票，有它的特性（它的序列号），但现金经济依赖每5美元钞票具有与每5美元钞票相同的价值。
+</code></pre>
+<p>Martin Fowler defines a Value Object as:</p>
+<blockquote>
+<p>a small object such as a Money or date range object. Their key property is that they follow value semantics rather than reference semantics. You can usually tell them because their notion of equality isn’t based on identity, instead two value objects are equal if all their fields are equal. Although all fields are equal, you don’t need to compare all fields if a subset is unique - for example currency codes for currency objects are enough to test equality. A general heuristic is that value objects should be entirely immutable. If you want to change a value object you should replace the object with a new one and not be allowed to update the values of the value object itself - updatable value objects lead to aliasing problems.</p>
+</blockquote>
+<pre><code class="lang-translate">一个小的对象，例如，钱或者时间范围对象，它们的关键属性是关注值语义，而不是引用语义。
+你通常可以告诉他们，因为他们的平等观念不是基于身份，而是，如果他们的所有字段都相等，两个值对象就是相等。
+尽管所有字段是相等，如果一个子集是唯一的，你不需要比较所有字段，例如，货币码，对于货币对象是能够测试等值。
+一般值对象应该是完全不可变的。
+如果你要改变一个值对象，你应该替换一个新的对象，而不允许更新原有对象本身的值，可更新值对象会导致别名问题。
+</code></pre>
+<blockquote>
+<p>One of the main goals of Value Objects is also the holy grail of Object-Oriented design: encapsulation.</p>
+</blockquote>
+<pre><code class="lang-translate">值对象的一个主要目标也是面向对象设计的圣杯：封装。
+</code></pre>
+<h3><span id="characteristics">Characteristics</span><a href="#characteristics" class="header-anchor">#</a></h3><p>Keeping this in mind, you can determine whether the concept in question can be modeled as a Value Object if:</p>
+<ul>
+<li>It measures, quantifies, or describes a thing in the Domain.</li>
+<li>It can be kept immutable.</li>
+<li>It models a conceptual whole by composing related attributes as an integral unit.</li>
+<li>It can be compared with others through value equality.</li>
+<li>It is completely replaceable when the measurement or description changes.</li>
+<li>It supplies its collaborators with side-effect-free behavior.</li>
+</ul>
+<pre><code class="lang-translate">能够作为一个值对象的条件：
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/17/http/" class="archive-article-date">
-  <time datetime="2018-04-17T01:35:50.000Z" itemprop="datePublished">4月 17</time>
-</a>
+- 它能测量、量化、描述领域中的事。
+- 它能够保持不可变。
+- 它由构成相关属性模型概念整体作为一个整体。
+- 它可以通过值相等性与其他人相比
+- 当测量或说明更改时，它是完全替代。
+- 为其合作者提供无副作用的行为。
+
+来自网络:
+
+对某个对象是什么不感兴趣，只关心它拥有的属性
+用来描述领域的特殊方面、且没有标识符的一个对象，叫做值对象
+能被简单的创建和丢弃，生命周期中不会被持久化
+值对象可以被共享，值对象应该不可变
+</code></pre>
+<h3><span id="measures-quantifies-or-describes">Measures, Quantifies, or Describes</span><a href="#measures-quantifies-or-describes" class="header-anchor">#</a></h3><h3><span id="immutability">Immutability</span><a href="#immutability" class="header-anchor">#</a></h3>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/17/http/">Http</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/12/Web/" class="archive-article-date">
-  <time datetime="2018-04-12T04:53:00.000Z" itemprop="datePublished">4月 12</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://friendlyxu.github.io/2018/04/26/ddd/" data-id="cjght435p0003fqi5sqdfli60" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/12/Web/">Web</a>
-    </h1>
-  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/architecture/">architecture</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/25/MySQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MySQL - show status</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
