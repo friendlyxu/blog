@@ -64,6 +64,123 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-rust-learning" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/28/rust-learning/" class="article-date">
+  <time datetime="2017-12-28T08:36:19.000Z" itemprop="datePublished">2017-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/28/rust-learning/">rust-learning</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Rust 主要是一个基于表达式的语言<br>Rust 中有两种类型的语句：“声明语句”和“表达式语句”<br>Rust 有两种需要你了解的注释格式：行注释（line comments）和文档注释（doc comments）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://friendlyxu.github.io/2017/12/28/rust-learning/" data-id="cjgrw6e0u001g06i5n5g1l9vl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rust/">rust</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-about-linux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/26/about-linux/" class="article-date">
+  <time datetime="2017-12-26T06:18:48.000Z" itemprop="datePublished">2017-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/26/about-linux/">about-linux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2><span id="qie-huan-python-ban-ben">切换python版本</span><a href="#qie-huan-python-ban-ben" class="header-anchor">#</a></h2><p>1.未被 update-alternatives 命令识别。想解决这个问题，我们需要更新一下替代列表，将 python2.7 和 python3.5 放入其中</p>
+<ul>
+<li>update-alternatives —install /usr/bin/python python /usr/bin/python2.7 1</li>
+<li>update-alternatives —install /usr/bin/python python /usr/bin/python3.5 2</li>
+</ul>
+<p>2.选择版本</p>
+<ul>
+<li>update-alternatives —config python</li>
+</ul>
+<p>3.删除(一旦我们的系统中不再存在某个 Python 的替代版本时)</p>
+<ul>
+<li>update-alternatives —remove python /usr/bin/python2.7</li>
+</ul>
+<h2><span id="var-lib-docker">/var/lib/docker</span><a href="#var-lib-docker" class="header-anchor">#</a></h2><ul>
+<li>docker rm container_id</li>
+<li>docker rmi image_id</li>
+</ul>
+<h2><span id="debian-9-network-problem">debian 9 network problem</span><a href="#debian-9-network-problem" class="header-anchor">#</a></h2><ol>
+<li>命令</li>
+</ol>
+<ul>
+<li>networkctl</li>
+<li>networkctl status</li>
+<li>systemctl status systemd-networkd systemd-resolved</li>
+<li>systemctl restart systemd-networkd systemd-resolved</li>
+</ul>
+<ol>
+<li>更推荐的作法是使用NetworkManager来管理网络</li>
+</ol>
+<ul>
+<li>sudo apt install networkmanager安装NetworkManager包后，命令行中多出两个命令，一个是nmcli纯命令的网络配置工具，一个是nmtui的终端图形配置工具。</li>
+<li>确定在文件/etc/network/interfaces中没有手动配置过网络，即上面一、中配置的内容应该被删除掉。</li>
+<li>nmtui打开图形界面，直接配置就好，当然也可以在这里设置无线连接的。</li>
+<li>sudo systemctl restart NetworkManager.service重启服务。</li>
+</ul>
+<h2><span id="shell-array">shell array</span><a href="#shell-array" class="header-anchor">#</a></h2><p>ids=(1 12 43 54)</p>
+<h2><span id="about-cpu">about cpu</span><a href="#about-cpu" class="header-anchor">#</a></h2><ul>
+<li>cat /proc/cpuinfo</li>
+<li>lscpu</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://friendlyxu.github.io/2017/12/26/about-linux/" data-id="cjgrw6e03000f06i5zasz10gi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-about-cookie" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/24/about-cookie/" class="article-date">
@@ -91,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/about-cookie/" data-id="cjght435r0005fqi5a3xj0rtj" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/24/about-cookie/" data-id="cjgrw6dzu000506i5t5vx7kih" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li></ul>
@@ -254,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://friendlyxu.github.io/2017/10/24/ml/" data-id="cjght4360000ifqi5fay1omh6" class="article-share-link">Share</a>
+      <a data-url="http://friendlyxu.github.io/2017/10/24/ml/" data-id="cjgrw6e0g000o06i5oa3jeoms" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
@@ -279,7 +396,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ML/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongo/">mongo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/security/">security</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ML/">ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/architecture/">architecture</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongo/">mongo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/search/">search</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/security/">security</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a></li></ul>
     </div>
   </div>
 
@@ -289,7 +406,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/">ML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/">architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/">mongo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rust/">rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDD/">DDD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/">ML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/architecture/">architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elastic/">elastic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongo/">mongo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rust/">rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/search/">search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
     </div>
   </div>
 
@@ -299,7 +416,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ML/" style="font-size: 10px;">ML</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/architecture/" style="font-size: 10px;">architecture</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/rust/" style="font-size: 10px;">rust</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/web/" style="font-size: 20px;">web</a>
+      <a href="/tags/DDD/" style="font-size: 10px;">DDD</a> <a href="/tags/ML/" style="font-size: 10px;">ML</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/architecture/" style="font-size: 15px;">architecture</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/elastic/" style="font-size: 10px;">elastic</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongo/" style="font-size: 10px;">mongo</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/rust/" style="font-size: 10px;">rust</a> <a href="/tags/search/" style="font-size: 10px;">search</a> <a href="/tags/security/" style="font-size: 10px;">security</a> <a href="/tags/web/" style="font-size: 20px;">web</a>
     </div>
   </div>
 
@@ -321,11 +438,15 @@
       <ul>
         
           <li>
-            <a href="/2018/04/26/ddd/">ddd</a>
+            <a href="/2018/04/28/elastic/">elastic</a>
           </li>
         
           <li>
-            <a href="/2018/04/25/MySQL/">MySQL - show status</a>
+            <a href="/2018/04/28/Architecture/">Architecture</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/26/ddd/">ddd</a>
           </li>
         
           <li>
@@ -333,11 +454,7 @@
           </li>
         
           <li>
-            <a href="/2018/04/19/angularjs/">AngularJS</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/17/mongo/">MongoDB</a>
+            <a href="/2018/04/25/MySQL/">MySQL - show status</a>
           </li>
         
       </ul>

@@ -3,15 +3,20 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>归档: 2017/10 | 21st</title>
+  <title>Architecture | 21st</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="21st">
-<meta property="og:url" content="http://friendlyxu.github.io/archives/2017/10/index.html">
+  <meta name="description" content="大型Web网站建设思路#1.高并发的核心技术背景：在系统开发过程中，经常遇到数据重复插入、重复更新、消息重发发送等等问题，因为应用系统的复杂逻辑以及网络交互存在的不确定性，会导致这一重复现象，但是有些逻辑是需要有幂等特性的，否则造成的后果会比较严重，例如订单重复创建，这时候带来的问题可是非同一般啊。  幂等的实现方案(乐观锁,悲观锁,分布式锁等等)   2.Api  RESTful API 时钟偏">
+<meta name="keywords" content="architecture">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Architecture">
+<meta property="og:url" content="http://friendlyxu.github.io/2018/04/28/Architecture/index.html">
 <meta property="og:site_name" content="21st">
+<meta property="og:description" content="大型Web网站建设思路#1.高并发的核心技术背景：在系统开发过程中，经常遇到数据重复插入、重复更新、消息重发发送等等问题，因为应用系统的复杂逻辑以及网络交互存在的不确定性，会导致这一重复现象，但是有些逻辑是需要有幂等特性的，否则造成的后果会比较严重，例如订单重复创建，这时候带来的问题可是非同一般啊。  幂等的实现方案(乐观锁,悲观锁,分布式锁等等)   2.Api  RESTful API 时钟偏">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-28T02:51:30.537Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="21st">
+<meta name="twitter:title" content="Architecture">
+<meta name="twitter:description" content="大型Web网站建设思路#1.高并发的核心技术背景：在系统开发过程中，经常遇到数据重复插入、重复更新、消息重发发送等等问题，因为应用系统的复杂逻辑以及网络交互存在的不确定性，会导致这一重复现象，但是有些逻辑是需要有幂等特性的，否则造成的后果会比较严重，例如订单重复创建，这时候带来的问题可是非同一般啊。  幂等的实现方案(乐观锁,悲观锁,分布式锁等等)   2.Api  RESTful API 时钟偏">
   
     <link rel="alternate" href="/atom.xml" title="21st" type="application/atom+xml">
   
@@ -62,58 +67,77 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/24/about-cookie/" class="archive-article-date">
-  <time datetime="2017-10-24T08:27:57.000Z" itemprop="datePublished">10月 24</time>
+        <section id="main"><article id="post-Architecture" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/28/Architecture/" class="article-date">
+  <time datetime="2018-04-28T01:48:05.000Z" itemprop="datePublished">2018-04-28</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/architecture/">architecture</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/24/about-cookie/">about-cookie</a>
+    <h1 class="article-title" itemprop="name">
+      Architecture
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/24/ml/" class="archive-article-date">
-  <time datetime="2017-10-24T06:04:24.000Z" itemprop="datePublished">10月 24</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/24/ml/">ML - Machine Learning</a>
-    </h1>
-  
+        <h1><span id="da-xing-web-wang-zhan-jian-she-si-lu">大型Web网站建设思路</span><a href="#da-xing-web-wang-zhan-jian-she-si-lu" class="header-anchor">#</a></h1><p>1.高并发的核心技术<br>背景：在系统开发过程中，经常遇到数据重复插入、重复更新、消息重发发送等等问题，因为应用系统的复杂逻辑以及网络交互存在的不确定性，会导致这一重复现象，但是有些逻辑是需要有幂等特性的，否则造成的后果会比较严重，例如订单重复创建，这时候带来的问题可是非同一般啊。</p>
+<ul>
+<li>幂等的实现方案(乐观锁,悲观锁,分布式锁等等)</li>
+<li></li>
+</ul>
+<p>2.Api</p>
+<ul>
+<li>RESTful API</li>
+<li>时钟偏差问题</li>
+<li>不同版本的架构思路</li>
+</ul>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://friendlyxu.github.io/2018/04/28/Architecture/" data-id="cjgrw6dzg000006i57ksbnaoo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/architecture/">architecture</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/28/elastic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          elastic
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/26/ddd/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ddd</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
